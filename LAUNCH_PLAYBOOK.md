@@ -22,7 +22,7 @@ Never describe this project as "a localized version of another digital-human rep
 
 Use this positioning:
 
-> A Codex Skill that turns Chinese long-form content into visually directed, release-gated avatar videos.
+> An open-source Codex Skill and basic video workbench that turns long-form content into directed, release-gated video projects.
 
 The durable difference:
 
@@ -83,11 +83,11 @@ Supporting docs:
 
 ### Day 0: Repository public
 
-- Replace `https://github.com/Kanvis-chen/article-to-avatar-video` in README and launch copy with `npm run release:set-url -- https://github.com/<owner>/article-to-avatar-video`.
+- Replace repository links with `npm run release:set-url -- https://github.com/<owner>/kanvis-cut`.
 - Add GitHub topics:
-  `codex-skill`, `ai-video`, `avatar-video`, `article-to-video`, `chinese-content`, `video-automation`, `hyperframes`, `content-creation`.
+  `codex-skill`, `ai-video`, `article-to-video`, `video-automation`, `content-creation`, `open-core`, `agent-workflow`, `hyperframes`, `digital-human`, `multilingual`.
 - Enable Issues, Discussions, private vulnerability reporting, and read-only Actions permissions.
-- Publish `v0.1.0` release.
+- Publish `v0.2.1` release.
 
 ### Day 1: Proof video
 
@@ -119,11 +119,11 @@ Open 3 `good first issue` items:
 
 - Ask 5 people with real Chinese long-form content to try the privacy-safe example.
 - Convert every failure into an issue or FAQ entry.
-- Ship `v0.1.1` only if it fixes a real first-run problem.
+- Ship a patch release only if it fixes a real first-run problem.
 
 ## README checklist before public release
 
-- [ ] Repository URL is real, not `https://github.com/Kanvis-chen/article-to-avatar-video`.
+- [ ] Repository URL points to the final `kanvis-cut` repository.
 - [ ] README has a demo video or GIF link.
 - [ ] Launch copy has real repository URL.
 - [ ] Social preview image follows `docs/social-preview-brief.md` and uses `assets/social-preview.svg` or a PNG export.

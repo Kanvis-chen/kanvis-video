@@ -1,23 +1,32 @@
 # Changelog
 
-## 0.2.0
+## 0.2.1
 
 ### Added
 
-- Complete MIT-licensed Kanvis Video Workbench source under `workbench/`.
+- Public project positioning moved toward Kanvis Cut, with `article-to-avatar-video` kept as the first bundled workflow.
+- Public naming, launch copy, repository setup, and social-preview assets now use Kanvis Cut as the open-source brand.
+- MIT-licensed basic Kanvis Video Workbench source under `workbench/`.
 - Visual canvas with draggable and resizable editable layers.
 - Multi-track timeline with seek, trim, split, delete, and selection.
 - Layer inspector for text, geometry, visibility, opacity, timing, and locking.
 - Live HyperFrames preview, rendered playback, revision history, undo, and redo.
-- Local project server, render jobs, Codex client, and MCP embedded-app integration.
+- Local project server, render jobs, Codex client, and MCP embedded-app integration for basic inspection and adjustment workflows.
 - Privacy-safe editable fixture and verified workbench screenshot.
 - Dedicated workbench CI for typecheck, tests, and production build.
 
 ### Changed
 
 - The editor opens as the default workbench view.
-- Public documentation now describes the workbench as fully open source.
+- Public documentation now describes the workbench as a basic open-source inspection and adjustment surface.
 - Removed course, pricing, one-to-one, and commercial upgrade surfaces from the UI and public documentation.
+
+## 0.2.0
+
+### Added
+
+- Initial MIT-licensed basic Kanvis Video Workbench source under `workbench/`.
+- Visual canvas, multi-track timeline, layer inspector, live preview, rendered playback, revision history, undo, redo, local project server, render jobs, Codex client, and MCP embedded-app integration.
 
 ## 0.1.1
 

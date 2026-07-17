@@ -31,9 +31,9 @@ Later versions may generate an editor draft directory when the format is underst
 
 This layer should be treated as experimental because editor draft formats can change without notice.
 
-## Level 3: commercial adapter
+## Level 3: commercial implementation adapter
 
-The paid workbench may include a tested adapter for specific app versions:
+A separate commercial implementation may include a tested adapter for specific app versions:
 
 - tested Jianying/CapCut version;
 - supported media tracks;
@@ -43,4 +43,3 @@ The paid workbench may include a tested adapter for specific app versions:
 - recovery instructions.
 
 Keep this adapter out of the open-source core until it is stable and safe to maintain publicly.
-

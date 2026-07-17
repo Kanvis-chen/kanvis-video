@@ -7,7 +7,7 @@ This document is for maintainers. It keeps the public story clear without naming
 Use this sentence:
 
 ```text
-Article to Avatar Video turns Chinese long-form content into visually directed, release-gated avatar videos.
+Kanvis Cut turns long-form content into directed, release-gated video projects. Its first workflow, `article-to-avatar-video`, supports avatar presenter output without making the avatar the center of the product.
 ```
 
 Do not use:
@@ -21,7 +21,7 @@ one-click talking-head generator
 
 ## Why This Is A Different Project
 
-| Question | Talking-head production skill | Article to Avatar Video |
+| Question | Talking-head production skill | Kanvis Cut |
 |---|---|---|
 | What is the input? | Finished script, portrait, voice sample | Article, WeChat post, Markdown, course draft |
 | What is the hard problem? | Authorized provider calls and asset readiness | Editorial adaptation, semantic direction, visual evidence |

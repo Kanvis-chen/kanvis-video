@@ -1,12 +1,12 @@
 # Kanvis Cut Suite Direction
 
-`article-to-avatar-video` is the first public skill in the Kanvis Cut direction.
+Kanvis Cut is the public project name for this open-source content-to-video system. `article-to-avatar-video` is the first bundled workflow.
 
 The long-term shape is a small skill suite, not one oversized prompt and not a closed editor:
 
 ```text
-Kanvis Cut Skills
-├── article-to-avatar-video   # article/script -> directed avatar video project
+Kanvis Cut
+├── article-to-avatar-video   # article/script -> directed video project
 ├── cut-project-protocol      # shared project format and validation rules
 ├── subtitle-director         # caption line breaks, emphasis, platform rhythm
 ├── effect-director           # transitions, emphasis, camera motion, visual beats
@@ -16,7 +16,7 @@ Kanvis Cut Skills
 
 ## Why start with one skill?
 
-The public release starts with `article-to-avatar-video` because it proves the hardest part:
+The public release starts with the `article-to-avatar-video` workflow because it proves the hardest part:
 
 - preserve a Chinese long-form source;
 - rewrite it for spoken delivery;
@@ -46,15 +46,16 @@ Routing examples:
 | "Generate a cover title and image prompt" | `cover-director` |
 | "Can this be released or exported?" | `export-checker` |
 
-For v0.1, keep the external name focused on `article-to-avatar-video`. Add the router only after at least two more skills have real examples and tests.
+Keep the external project name focused on `Kanvis Cut`. Add the router command only after at least two more workflows have real examples and tests.
 
 ## Naming
 
 Use these names consistently:
 
-- `Article to Avatar Video`: the first open-source skill.
-- `Kanvis Cut Skills`: the future open skill suite.
-- `Kanvis Video Workbench`: the open-source visual editing workbench.
+- `Kanvis Cut`: the open-source project and public brand.
+- `Article to Avatar Video`: the first workflow inside Kanvis Cut.
+- `Kanvis Cut Skills`: the future workflow suite.
+- `Kanvis Video Workbench`: the open-source basic visual editing workbench.
 - `Kanvis Business Skills`: the future higher-level business skill ecosystem.
 
 This keeps the public project from trapping the creator in a narrow "video tool" identity. The video skill is one production module inside a larger business system.

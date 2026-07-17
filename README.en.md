@@ -1,26 +1,28 @@
-# Article to Avatar Video
+# Kanvis Cut
 
 English | [中文](README.md)
 
 > Do not merely read an article aloud. Direct it into a video.
 
-A Codex Skill that turns Chinese long-form content into a visually directed, release-gated video project across human enhancement, faceless visual, and authorized avatar modes.
+Kanvis Cut is an open-source Codex Skill and basic video workbench for turning long-form content into directed, release-gated video projects.
 
-Current version: `v0.2.0`
+Its first bundled workflow is `article-to-avatar-video`: long-form content becomes a visually directed project across human enhancement, faceless visual, and authorized avatar modes, with multilingual voice and caption paths.
+
+Current version: `v0.2.1`
 
 ## Why it exists
 
-Most avatar tools start with a finished script and return a talking-head clip. `article-to-avatar-video` starts with the article. It decides what to say, how to say it, which claims need visual evidence, and when the presenter should move aside for the information.
+Most avatar tools start with a finished script and return a talking-head clip. Kanvis Cut starts with the article. It decides what to say, how to say it, which claims need visual evidence, and when the presenter should move aside for the information.
 
 It is not another talking-head generator. It is an editorial video production pipeline.
 
 ## How it differs from digital-human talking-head skills
 
-This project is not centered on "generate one avatar clip." It is centered on "direct one Chinese long-form article into a publishable video."
+This project is not centered on "generate one avatar clip." It is centered on "direct long-form content into a publishable video project."
 
-| Dimension | Digital-human talking-head skill | Article to Avatar Video |
+| Dimension | Digital-human talking-head skill | Kanvis Cut |
 |---|---|---|
-| Starting point | Finished script, portrait, and voice source | Chinese article, WeChat post, or Markdown document |
+| Starting point | Finished script, portrait, and voice source | Long-form article, WeChat post, course script, or Markdown document |
 | Core problem | Safely coordinate voice/avatar providers | Adapt, storyboard, visualize, and release-gate article content |
 | Screen strategy | Presenter-led talking head | Information graphics, evidence, process, comparison, and presenter PIP |
 | Success criterion | Authorized avatar video generation | Source fidelity, visual information density, controlled cost, publish-ready QA |
@@ -29,7 +31,7 @@ This project is not centered on "generate one avatar clip." It is centered on "d
 If you already have a finished script and only need an authorized talking-head clip, this is not the shortest path.
 If you have articles, course scripts, or knowledge-base content that need visual structure, this is the intended scope.
 
-Maintainers can use [docs/positioning-vs-talking-head-skills.md](docs/positioning-vs-talking-head-skills.md) to keep public communication centered on the article-native video pipeline, not a provider pairing or talking-head clone.
+Maintainers can use [docs/positioning-vs-talking-head-skills.md](docs/positioning-vs-talking-head-skills.md) to keep public communication centered on the directed content-to-video pipeline, not a provider pairing or talking-head clone.
 
 ## What makes it different
 
@@ -44,7 +46,7 @@ Maintainers can use [docs/positioning-vs-talking-head-skills.md](docs/positionin
 
 ```mermaid
 flowchart LR
-    A["Chinese article"] --> B["Brief and risk flags"]
+    A["Long-form content"] --> B["Brief and risk flags"]
     B --> C["Spoken script and pronunciations"]
     C --> D["Semantic scene plan"]
     D --> E["Voice and avatar preview"]
@@ -75,13 +77,13 @@ The project remains useful without paid MiniMax or HeyGen calls. See [docs/local
 
 ## Open-source video workbench
 
-The repository includes the complete [Kanvis Video Workbench](workbench/README.md), not only a project contract or screenshots.
+The repository includes the basic [Kanvis Video Workbench](workbench/README.md), so users can inspect and lightly adjust Agent-generated video projects instead of only reading a project contract or screenshots.
 
 ![Kanvis Video Workbench with canvas, inspector, and multi-track timeline](assets/workbench-preview.png)
 
-It provides a visual layer canvas, multi-track timeline, text and effect controls, live preview, rendered playback, split/delete operations, undo/redo revisions, local project storage, render jobs, and Codex/MCP integration.
+It provides a visual layer canvas, basic multi-track timeline, text and effect controls, live preview, rendered playback, split/delete operations, undo/redo, local project storage, render jobs, and Codex/MCP integration.
 
-The source is under [`workbench/`](workbench/) and is released under MIT. See [Jianying / CapCut Export Strategy](docs/jianying-capcut-export.md) for the export direction.
+The source is under [`workbench/`](workbench/) and is released under MIT. Its role is a basic inspection and adjustment surface, not the full commercial production backend. Customer project management, batch queues, account/provider operations, private template libraries, team SOPs, commercial export adapters, and client delivery systems are outside this repository. See [Jianying / CapCut Export Strategy](docs/jianying-capcut-export.md) for the export direction.
 
 ## Requirements
 
@@ -94,13 +96,13 @@ The source is under [`workbench/`](workbench/) and is released under MIT. See [J
 ## Install
 
 ```bash
-git clone https://github.com/Kanvis-chen/article-to-avatar-video ~/.codex/skills/article-to-avatar-video
+git clone https://github.com/Kanvis-chen/kanvis-cut ~/.codex/skills/kanvis-cut
 ```
 
 Start a new Codex task and invoke the Skill explicitly:
 
 ```text
-Use $article-to-avatar-video to turn this Chinese article into a visually directed avatar video.
+Use $article-to-avatar-video from Kanvis Cut to turn this Chinese article into a visually directed video project.
 Show me the script, scene plan, provider cost, and preview before paid full-length generation.
 ```
 

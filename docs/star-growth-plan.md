@@ -37,7 +37,7 @@ I want a structured pipeline that preserves claims, directs scenes, controls cos
 ### Day 0: GitHub Public
 
 - Push `main`.
-- Publish `v0.1.0`.
+- Publish `v0.2.1`.
 - Add the recommended description and topics.
 - Create 3 good first issues from `docs/good-first-issues.md`.
 - Open one discussion from `docs/launch-copy.md`.
@@ -123,4 +123,3 @@ Do not mass-message unrelated users. The project needs qualified attention.
 - Do not imply bundled provider credits or accounts.
 - Do not promise viral video generation.
 - Do not publish private portraits, voice samples, keys, signed URLs, client videos, cookies, or account state.
-

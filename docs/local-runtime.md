@@ -31,7 +31,7 @@ These are routing defaults, not performance guarantees. Model versions, resoluti
 
 ## Optional convenience tooling
 
-The open repository includes detection, reference adapters, configuration, fallback behavior, and the visual workbench. Additional distributions may provide:
+The open repository includes detection, reference adapters, configuration, fallback behavior, and the basic visual workbench. Additional distributions may provide:
 
 - one-click Windows installation;
 - model download and integrity checks;

@@ -1,20 +1,22 @@
-# Article to Avatar Video
+# Kanvis Cut
 
 [English](README.en.md) | 中文
 
 > 文章不是拿来逐字朗读的，而是拿来重新导演的。
 
-一个面向 Codex 的中文长文视频化 Skill：从原文保真、口播改写和语义分镜，到真人增强、无人出镜、数字分身、信息图、字幕、音频、渲染与发布门禁。
+Kanvis Cut 是一个开源的 Codex Skill + 基础视频工作台，用来把长文、课程稿和知识库内容变成可导演、可检查、可发布的视频项目。
 
-当前版本：`v0.2.0`
+当前内置的首个 workflow 是 `article-to-avatar-video`：从原文保真、口播改写和语义分镜，到真人增强、无人出镜、数字分身、信息图、字幕、多语种配音路径、音频、渲染与发布门禁。
+
+当前版本：`v0.2.1`
 
 ## 它解决什么问题
 
-普通数字人工具通常从“已有脚本”开始，最终输出一段人物口播。`article-to-avatar-video` 从文章开始，先判断讲什么、怎么讲、什么时候应该让数字人退到画面一角，再把内容编排成可检查、可恢复、可替换供应商的视频项目。
+普通数字人工具通常从“已有脚本”开始，最终输出一段人物口播。Kanvis Cut 从文章开始，先判断讲什么、怎么讲、什么时候应该让数字人退到画面一角，再把内容编排成可检查、可恢复、可替换供应商的视频项目。
 
 它不是另一个 talking-head generator，而是一条内容视频生产流水线。
 
-| 能力 | 普通数字人生成 | Article to Avatar Video |
+| 能力 | 普通数字人生成 | Kanvis Cut |
 |---|---|---|
 | 输入 | 已完成脚本 | 中文长文、公众号文章、Markdown |
 | 内容处理 | 直接朗读 | 原文保真、口语改写、发音表、风险标记 |
@@ -24,9 +26,9 @@
 
 ## 与数字人口播 Skill 的区别
 
-这个项目不以“生成一个数字人视频”为中心，而以“把一篇中文长文重新导演成可发布视频”为中心。
+Kanvis Cut 不以“生成一个数字人视频”为中心，而以“把一篇中文长文重新导演成可发布视频”为中心。
 
-| 维度 | 数字人口播 Skill | Article to Avatar Video |
+| 维度 | 数字人口播 Skill | Kanvis Cut |
 |---|---|---|
 | 起点 | 已经写好的脚本、肖像和声音 | 中文长文、公众号文章、Markdown |
 | 核心问题 | 如何安全调用声音和数字人供应商 | 如何把文章改写、分镜、视觉化并通过发布质检 |
@@ -37,7 +39,7 @@
 如果你已经有一个完整脚本，只想做授权数字人口播，这不是最短路径。
 如果你有大量文章、课程稿或知识库内容，想把它们变成有画面结构的视频，这正是本项目的范围。
 
-维护者可参考 [docs/positioning-vs-talking-head-skills.md](docs/positioning-vs-talking-head-skills.md)，确保公开传播始终围绕 article-native video pipeline，而不是某个供应商组合或数字人口播复刻。
+维护者可参考 [docs/positioning-vs-talking-head-skills.md](docs/positioning-vs-talking-head-skills.md)，确保公开传播始终围绕 directed content-to-video pipeline，而不是某个供应商组合或数字人口播复刻。
 
 ## 工作流
 
@@ -100,21 +102,21 @@ flowchart LR
 
 ## 开源剪辑工作台
 
-仓库同时开放完整的 [Kanvis Video Workbench](workbench/README.md)，不是只开放项目协议或展示截图。
+仓库同时开放 [Kanvis Video Workbench](workbench/README.md) 的基础版，方便用户检查和微调 Agent 生成的视频项目，而不是只开放项目协议或展示截图。
 
 ![Kanvis Video Workbench：画布、属性面板与多轨时间轴](assets/workbench-preview.png)
 
-工作台提供：
+基础工作台提供：
 
 - 可选择、拖动和缩放图层的可视化画布；
-- 支持定位、分割、删除和多轨编辑的时间轴；
+- 支持定位、分割、删除和基础多轨编辑的时间轴；
 - 文本、位置、尺寸、透明度、时长和特效参数调整；
 - 实时特效预览与成片播放；
-- 独立编辑 revision、撤销与重做；
+- 撤销与重做；
 - 本地项目存储、预览服务和渲染任务；
 - HyperFrames、Codex 和 MCP 接入。
 
-源码位于 [`workbench/`](workbench/)，使用 MIT 许可证。参见 [Jianying / CapCut Export Strategy](docs/jianying-capcut-export.md) 了解项目导出方向。
+源码位于 [`workbench/`](workbench/)，使用 MIT 许可证。它的定位是“基础检查与微调台”，不是完整商业生产后台；客户项目管理、批量队列、账号与供应商运营、私有模板库、团队 SOP、商业导出适配和客户交付系统不在本仓库范围内。参见 [Jianying / CapCut Export Strategy](docs/jianying-capcut-export.md) 了解项目导出方向。
 
 ## 安装
 
@@ -129,13 +131,13 @@ flowchart LR
 将仓库放入 Codex skills 目录：
 
 ```bash
-git clone https://github.com/Kanvis-chen/article-to-avatar-video ~/.codex/skills/article-to-avatar-video
+git clone https://github.com/Kanvis-chen/kanvis-cut ~/.codex/skills/kanvis-cut
 ```
 
 启动新的 Codex 任务并显式调用：
 
 ```text
-Use $article-to-avatar-video to turn this Chinese article into a visually directed avatar video.
+Use $article-to-avatar-video from Kanvis Cut to turn this Chinese article into a visually directed video project.
 Show me the script, scene plan, provider cost, and preview before paid full-length generation.
 ```
 

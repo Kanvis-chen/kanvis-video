@@ -1,10 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1280" height="640" viewBox="0 0 1280 640" role="img" aria-labelledby="title desc">
-  <title id="title">Article to Avatar Video social preview</title>
-  <desc id="desc">An article becomes a visually directed video with scene planning, presenter PIP, information graphics, and release QA.</desc>
+  <title id="title">Kanvis Cut social preview</title>
+  <desc id="desc">Long-form content becomes a visually directed video project with scene planning, presenter PIP, information graphics, and release QA.</desc>
   <rect width="1280" height="640" fill="#f7f8fb"/>
   <rect x="44" y="44" width="1192" height="552" rx="28" fill="#ffffff" stroke="#d7dce5" stroke-width="2"/>
-  <text x="88" y="112" font-family="Inter, Arial, sans-serif" font-size="46" font-weight="800" fill="#111827">Article to Avatar Video</text>
-  <text x="90" y="154" font-family="Inter, Arial, sans-serif" font-size="22" fill="#4b5563">Chinese long-form content -&gt; visually directed, release-gated avatar videos</text>
+  <text x="88" y="112" font-family="Inter, Arial, sans-serif" font-size="46" font-weight="800" fill="#111827">Kanvis Cut</text>
+  <text x="90" y="154" font-family="Inter, Arial, sans-serif" font-size="22" fill="#4b5563">Long-form content -&gt; directed, release-gated video projects</text>
 
   <g transform="translate(90 206)">
     <rect width="300" height="302" rx="18" fill="#f9fafb" stroke="#cfd6e1" stroke-width="2"/>

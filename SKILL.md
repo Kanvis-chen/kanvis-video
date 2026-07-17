@@ -3,7 +3,7 @@ name: article-to-avatar-video
 description: Turn a Chinese article, WeChat Official Account post, Markdown document, or pasted long-form text into a visually directed, release-gated video project in one of three presenter modes: human enhancement, faceless visual, or authorized avatar presenter. Use when Codex must preserve source fidelity, rewrite an article for speech, create a timed semantic storyboard, add article-matched information graphics and effects, compose captions and audio, select local/cloud/mock execution without hidden paid calls, render an MP4, and run release-quality checks.
 ---
 
-# Article to Avatar Video
+# Kanvis Cut: Article to Avatar Video Workflow
 
 Create a repeatable article-to-video project. Treat the skill as an orchestrator: select one presenter mode, use provider adapters only when that mode needs them, and use HyperFrames for deterministic layout, animation, captions, composition, and rendering.
 

@@ -2,7 +2,7 @@
 
 ## Capability
 
-Publish the existing VisualHyper editing workbench as reproducible source code: canvas preview, timeline editing, layer inspector, parameter controls, history, project storage, preview, render jobs, and Codex/MCP integration.
+Publish a basic VisualHyper editing workbench as reproducible source code: canvas preview, timeline editing, layer inspector, parameter controls, project storage, preview, render jobs, and Codex/MCP integration.
 
 ## Open-source review
 
@@ -17,7 +17,7 @@ Publish the existing VisualHyper editing workbench as reproducible source code: 
 
 ## Decision
 
-Open the complete existing workbench source under MIT. Keep engine and host integrations behind packages and adapters. Do not include dependency folders, build output, credentials, user projects, client media, commercial links, or private operational documents.
+Open the basic workbench source under MIT. Keep engine and host integrations behind packages and adapters. Do not include dependency folders, build output, credentials, user projects, client media, commercial links, private operational documents, customer project management, batch queues, account operations, private templates, or managed delivery systems.
 
 ## Rejected alternatives
 

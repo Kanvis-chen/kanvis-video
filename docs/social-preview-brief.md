@@ -34,8 +34,8 @@ Right side:
 Footer:
 
 ```text
-Article to Avatar Video
-Chinese long-form content -> visually directed, release-gated avatar videos
+Kanvis Cut
+Long-form content -> directed, release-gated video projects
 ```
 
 ## Avoid

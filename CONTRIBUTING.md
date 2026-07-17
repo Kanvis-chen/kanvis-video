@@ -1,6 +1,6 @@
 # Contributing
 
-Thanks for improving `article-to-avatar-video`.
+Thanks for improving Kanvis Cut.
 
 ## Before opening a change
 

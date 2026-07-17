@@ -86,13 +86,16 @@ See `docs/good-first-issues.md`.
 
 ## Is the visual editor open source?
 
-Yes. The complete Kanvis Video Workbench source is included under `workbench/` with an MIT license. It includes the canvas, timeline, layer inspector, preview, project service, render jobs, and Codex/MCP integration.
+Yes. The basic Kanvis Video Workbench source is included under `workbench/` with an MIT license. It includes the canvas, timeline, layer inspector, preview, project service, render jobs, and Codex/MCP integration for inspecting and lightly adjusting generated projects.
+
+It is not the full commercial production backend. Customer project management, batch queues, provider/account operations, private templates, team SOPs, commercial export adapters, and client delivery systems are intentionally outside this repository.
 
 ## Is this the future Kanvis Cut Skills suite?
 
 This repository is the first public skill in that direction. The suite should grow gradually:
 
 ```text
+kanvis-cut
 article-to-avatar-video
 cut-project-protocol
 subtitle-director
@@ -101,4 +104,4 @@ cover-director
 export-checker
 ```
 
-For v0.1, the public project remains focused on article-to-avatar video. The broader suite direction is documented in `docs/kanvis-cut-suite.md`.
+The public project is now Kanvis Cut. `article-to-avatar-video` remains the first bundled workflow inside the broader suite direction documented in `docs/kanvis-cut-suite.md`.

@@ -1,7 +1,7 @@
 {
-  "name": "article-to-avatar-video",
-  "version": "0.2.0",
-  "description": "A Codex Skill that turns Chinese long-form content into visually directed, release-gated avatar videos.",
+  "name": "kanvis-cut",
+  "version": "0.2.1",
+  "description": "An open-source Codex Skill and basic video workbench for turning long-form content into directed video projects.",
   "type": "module",
   "scripts": {
     "test": "node --test tests/*.test.mjs",

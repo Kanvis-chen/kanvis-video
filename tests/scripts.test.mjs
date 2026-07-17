@@ -172,11 +172,11 @@ test('repository URL helper replaces placeholders only for the expected repo', (
       'https://github.com/example/wrong-name'
     ], { cwd: temp, encoding: 'utf8' });
     assert.equal(bad.status, 2);
-    assert.match(bad.stderr, /article-to-avatar-video/);
+    assert.match(bad.stderr, /kanvis-cut/);
 
     const good = spawnSync(process.execPath, [
       path.join(temp, 'scripts/set-repository-url.mjs'),
-      'https://github.com/example/article-to-avatar-video'
+      'https://github.com/example/kanvis-cut'
     ], { cwd: temp, encoding: 'utf8' });
     assert.equal(good.status, 0, good.stderr || good.stdout);
     const report = JSON.parse(good.stdout);
@@ -190,7 +190,7 @@ test('repository URL helper replaces placeholders only for the expected repo', (
       'docs/repository-setup.md'
     ]) {
       const text = fs.readFileSync(path.join(temp, file), 'utf8');
-      assert.match(text, /https:\/\/github\.com\/example\/article-to-avatar-video/);
+      assert.match(text, /https:\/\/github\.com\/example\/kanvis-cut/);
       assert.equal(text.includes(repositoryPlaceholder), false);
     }
   } finally {
