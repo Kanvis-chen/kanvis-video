@@ -1,0 +1,37 @@
+{
+  "schema_version": "0.1.0",
+  "title": "Open source does not mean free delivery",
+  "language": "zh-CN",
+  "target_platform": "xiaohongshu",
+  "cover": {
+    "title": "开源了，为什么还能卖高价？",
+    "layout": "half-body presenter, GitHub star card, price ladder",
+    "image_prompt": "A clean Chinese business education thumbnail with a presenter, GitHub stars, and a price ladder. High contrast, professional, no fake logos."
+  },
+  "scenes": [
+    {
+      "id": "scene_01",
+      "purpose": "hook",
+      "voiceover": "很多人以为开源就等于把生意送出去。",
+      "caption": "开源不是免费交付",
+      "visual_role": "presenter_pip",
+      "effects": ["push_in", "keyword_highlight"]
+    },
+    {
+      "id": "scene_02",
+      "purpose": "core_claim",
+      "voiceover": "真正收费的不是代码，而是确定性、模板、工作台和落地结果。",
+      "caption": "免费卖信任，付费卖结果",
+      "visual_role": "comparison",
+      "effects": ["split_compare", "price_ladder"]
+    },
+    {
+      "id": "scene_03",
+      "purpose": "handoff",
+      "voiceover": "开源技能负责让别人看懂方法，付费工作台负责让用户稳定生产。",
+      "caption": "Skill 是入口，Workbench 是生产系统",
+      "visual_role": "process",
+      "effects": ["step_reveal", "soft_transition"]
+    }
+  ]
+}

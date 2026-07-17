@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "title": "Example video",
+  "target_duration_seconds": 90,
+  "scenes": [
+    {
+      "id": "scene-01",
+      "purpose": "hook",
+      "voiceover": "很多人以为……真正的问题其实是……",
+      "visual_role": "presenter-led",
+      "graphic_type": "hero-claim",
+      "avatar_layout": "center-medium",
+      "source_refs": ["paragraph-1"],
+      "on_screen_text": ["真正的问题"],
+      "estimated_seconds": 7
+    }
+  ]
+}

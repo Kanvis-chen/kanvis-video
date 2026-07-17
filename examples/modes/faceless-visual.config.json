@@ -1,0 +1,22 @@
+{
+  "version": 2,
+  "production": { "presenter_mode": "none" },
+  "runtime": { "mode": "auto", "allow_cloud_fallback": false },
+  "publishing": {
+    "platform": "xiaohongshu",
+    "aspect_ratio": "9:16",
+    "width": 1080,
+    "height": 1920,
+    "fps": 30,
+    "max_duration_seconds": 120
+  },
+  "voice": {
+    "strategy": "tts",
+    "provider": "local",
+    "consent_confirmed": true,
+    "speed": 1
+  },
+  "effects": { "enabled": true, "intensity": "medium" },
+  "workbench": { "enabled": true, "project_format": "kanvis-cut-project" },
+  "cost": { "paid_calls": "off", "currency": "USD", "cost_limit_per_video": 0 }
+}

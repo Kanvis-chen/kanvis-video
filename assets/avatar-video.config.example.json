@@ -1,0 +1,51 @@
+{
+  "version": 2,
+  "language": "zh-CN",
+  "production": {
+    "presenter_mode": "avatar"
+  },
+  "runtime": {
+    "mode": "auto",
+    "allow_cloud_fallback": true
+  },
+  "publishing": {
+    "platform": "wechat-channels",
+    "aspect_ratio": "9:16",
+    "width": 1080,
+    "height": 1920,
+    "fps": 30,
+    "max_duration_seconds": 180
+  },
+  "avatar": {
+    "source_type": "generated_avatar",
+    "provider": "heygen",
+    "avatar_id": "REPLACE_ME",
+    "consent_confirmed": false,
+    "layout_default": "right-pip",
+    "background_mode": "green-screen"
+  },
+  "voice": {
+    "strategy": "clone",
+    "provider": "heygen",
+    "voice_id": "REPLACE_ME",
+    "consent_confirmed": false,
+    "speed": 1.0
+  },
+  "brand": {
+    "assets_dir": "./brand",
+    "primary_color": "#F2A900",
+    "background_color": "#F6F1E8",
+    "text_color": "#171717",
+    "font_family": "Noto Sans SC"
+  },
+  "audio": {
+    "bgm_enabled": true,
+    "target_lufs": -14,
+    "voice_over_bgm_db": 14
+  },
+  "cost": {
+    "paid_calls": "confirm",
+    "currency": "USD",
+    "cost_limit_per_video": 20
+  }
+}

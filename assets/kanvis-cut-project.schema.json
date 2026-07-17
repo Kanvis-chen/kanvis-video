@@ -1,0 +1,62 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.com/kanvis-cut-project.schema.json",
+  "title": "Kanvis Cut Project",
+  "type": "object",
+  "required": ["schema_version", "title", "language", "target_platform", "scenes"],
+  "properties": {
+    "schema_version": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "language": {
+      "type": "string",
+      "examples": ["zh-CN"]
+    },
+    "target_platform": {
+      "type": "string",
+      "examples": ["xiaohongshu", "wechat-channels", "bilibili"]
+    },
+    "cover": {
+      "type": "object",
+      "properties": {
+        "title": { "type": "string" },
+        "layout": { "type": "string" },
+        "image_prompt": { "type": "string" }
+      },
+      "additionalProperties": true
+    },
+    "scenes": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["id", "purpose", "voiceover", "visual_role"],
+        "properties": {
+          "id": { "type": "string" },
+          "purpose": { "type": "string" },
+          "voiceover": { "type": "string" },
+          "caption": { "type": "string" },
+          "visual_role": {
+            "type": "string",
+            "enum": ["presenter", "presenter_pip", "diagram", "evidence", "comparison", "process", "quote", "checklist"]
+          },
+          "effects": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "assets": {
+            "type": "array",
+            "items": { "type": "string" }
+          }
+        },
+        "additionalProperties": true
+      }
+    }
+  },
+  "additionalProperties": true
+}
+

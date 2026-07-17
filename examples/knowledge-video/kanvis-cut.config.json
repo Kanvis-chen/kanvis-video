@@ -1,0 +1,51 @@
+{
+  "version": 2,
+  "language": "zh-CN",
+  "production": {
+    "presenter_mode": "none"
+  },
+  "runtime": {
+    "mode": "auto",
+    "allow_cloud_fallback": false
+  },
+  "publishing": {
+    "platform": "wechat-channels",
+    "aspect_ratio": "9:16",
+    "width": 1080,
+    "height": 1920,
+    "fps": 30,
+    "max_duration_seconds": 180
+  },
+  "voice": {
+    "strategy": "tts",
+    "provider": "local",
+    "voice_id": "",
+    "consent_confirmed": true,
+    "speed": 1.0
+  },
+  "effects": {
+    "enabled": true,
+    "intensity": "medium"
+  },
+  "workbench": {
+    "enabled": true,
+    "project_format": "kanvis-cut-project"
+  },
+  "brand": {
+    "assets_dir": "./brand",
+    "primary_color": "#F2A900",
+    "background_color": "#F6F1E8",
+    "text_color": "#171717",
+    "font_family": "Noto Sans SC"
+  },
+  "audio": {
+    "bgm_enabled": true,
+    "target_lufs": -14,
+    "voice_over_bgm_db": 14
+  },
+  "cost": {
+    "paid_calls": "off",
+    "currency": "USD",
+    "cost_limit_per_video": 0
+  }
+}

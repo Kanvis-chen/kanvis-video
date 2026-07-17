@@ -1,0 +1,26 @@
+{
+  "version": 2,
+  "production": { "presenter_mode": "human" },
+  "runtime": { "mode": "local", "allow_cloud_fallback": false },
+  "publishing": {
+    "platform": "wechat-channels",
+    "aspect_ratio": "9:16",
+    "width": 1080,
+    "height": 1920,
+    "fps": 30,
+    "max_duration_seconds": 180
+  },
+  "human": {
+    "source_video": "input/presenter.mp4",
+    "consent_confirmed": true
+  },
+  "voice": {
+    "strategy": "original",
+    "provider": "off",
+    "consent_confirmed": true,
+    "speed": 1
+  },
+  "effects": { "enabled": true, "intensity": "medium" },
+  "workbench": { "enabled": true, "project_format": "kanvis-cut-project" },
+  "cost": { "paid_calls": "off", "currency": "USD", "cost_limit_per_video": 0 }
+}

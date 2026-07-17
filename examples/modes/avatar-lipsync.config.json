@@ -1,0 +1,30 @@
+{
+  "version": 2,
+  "production": { "presenter_mode": "avatar" },
+  "runtime": { "mode": "auto", "allow_cloud_fallback": false },
+  "publishing": {
+    "platform": "wechat-channels",
+    "aspect_ratio": "9:16",
+    "width": 1080,
+    "height": 1920,
+    "fps": 25,
+    "max_duration_seconds": 120
+  },
+  "avatar": {
+    "source_type": "performance_lipsync",
+    "provider": "musetalk",
+    "source_video": "input/authorized-performance.mp4",
+    "consent_confirmed": true,
+    "layout_default": "right-pip",
+    "background_mode": "original"
+  },
+  "voice": {
+    "strategy": "tts",
+    "provider": "local",
+    "consent_confirmed": true,
+    "speed": 1
+  },
+  "effects": { "enabled": true, "intensity": "medium" },
+  "workbench": { "enabled": true, "project_format": "kanvis-cut-project" },
+  "cost": { "paid_calls": "off", "currency": "USD", "cost_limit_per_video": 0 }
+}

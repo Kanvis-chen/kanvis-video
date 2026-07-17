@@ -1,0 +1,35 @@
+{
+  "publish_ready": true,
+  "mode": "example",
+  "video": {
+    "path": "output/video.mp4",
+    "duration_seconds": 52.0,
+    "width": 1080,
+    "height": 1920,
+    "fps": 30,
+    "has_audio": true
+  },
+  "source_fidelity": {
+    "source_preserved": true,
+    "invented_statistics": false,
+    "unsourced_case_studies": false,
+    "risk_flags_reviewed": true
+  },
+  "visual_review": {
+    "status": "passed",
+    "avatar_artifacts": "none observed in review sample",
+    "captions_block_face": false,
+    "graphics_misrepresent_claims": false,
+    "safe_margins_checked": true
+  },
+  "cost_and_consent": {
+    "paid_calls": "off",
+    "avatar_consent_confirmed": true,
+    "voice_consent_confirmed": true,
+    "estimated_provider_cost": 0
+  },
+  "notes": [
+    "Privacy-safe example report. It does not reference a real portrait, real voice sample, signed URL, provider job, or client video.",
+    "Use this shape as a release evidence example, not as proof that an unreviewed video is publish-ready."
+  ]
+}

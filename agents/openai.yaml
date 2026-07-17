@@ -1,0 +1,7 @@
+interface:
+  display_name: "文章转数字人视频"
+  short_description: "把中文长文编排成有信息图和发布门禁的数字人视频"
+  default_prompt: "Use $article-to-avatar-video to turn this Chinese article into a visually directed avatar video. Show me the script, scene plan, provider cost, and preview before any paid full-length generation."
+
+policy:
+  allow_implicit_invocation: false

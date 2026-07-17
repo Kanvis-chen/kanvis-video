@@ -1,0 +1,33 @@
+name: Feature request
+description: Propose a provider adapter, visual grammar, workflow, QA rule, or platform preset.
+title: "[Feature]: "
+labels: [enhancement]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: What production problem should this solve?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed behavior
+      description: Describe inputs, outputs, user gates, and failure behavior.
+    validations:
+      required: true
+  - type: dropdown
+    id: paid
+    attributes:
+      label: Can this trigger paid network actions?
+      options:
+        - No
+        - Yes
+        - Unsure
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered

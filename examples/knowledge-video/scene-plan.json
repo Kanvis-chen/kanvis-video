@@ -1,0 +1,73 @@
+{
+  "version": 1,
+  "title": "知识型视频为什么不能只是把文章念一遍",
+  "target_duration_seconds": 52,
+  "scenes": [
+    {
+      "id": "scene-01",
+      "purpose": "hook",
+      "voiceover": "很多人把文章转视频，第一步就是让数字人把全文念出来。但问题也从这里开始。",
+      "visual_role": "presenter-led",
+      "graphic_type": "hero-claim",
+      "avatar_layout": "center-medium",
+      "source_refs": ["paragraph-1"],
+      "on_screen_text": ["文章转视频，不等于把文章念一遍"],
+      "estimated_seconds": 8
+    },
+    {
+      "id": "scene-02",
+      "purpose": "explain-medium-difference",
+      "voiceover": "文章可以停下来回看，视频却一直向前，所以同一份内容需要重新组织节奏。",
+      "visual_role": "split-layout",
+      "graphic_type": "comparison",
+      "avatar_layout": "right-pip",
+      "source_refs": ["paragraph-1"],
+      "on_screen_text": ["文章：可停留", "视频：持续向前"],
+      "estimated_seconds": 8
+    },
+    {
+      "id": "scene-03",
+      "purpose": "show-editorial-first-step",
+      "voiceover": "真正的第一步，是先确定受众、核心结论和必须保留的证据。",
+      "visual_role": "content-led",
+      "graphic_type": "three-step-stack",
+      "avatar_layout": "left-small",
+      "source_refs": ["paragraph-2"],
+      "on_screen_text": ["受众", "核心结论", "证据"],
+      "estimated_seconds": 8
+    },
+    {
+      "id": "scene-04",
+      "purpose": "explain-visual-grammar",
+      "voiceover": "让画面承担解释工作：比较用对照，过程用流程，数字单独出现，原始资料获得更大的空间。",
+      "visual_role": "evidence-fullscreen",
+      "graphic_type": "visual-grammar-grid",
+      "avatar_layout": "absent",
+      "source_refs": ["paragraph-3"],
+      "on_screen_text": ["比较", "流程", "数字", "证据"],
+      "estimated_seconds": 10
+    },
+    {
+      "id": "scene-05",
+      "purpose": "show-recoverable-pipeline",
+      "voiceover": "把原文、口播、分镜、远程任务和质检报告保存下来，失败时就可以从当前阶段继续。",
+      "visual_role": "content-led",
+      "graphic_type": "pipeline",
+      "avatar_layout": "right-pip",
+      "source_refs": ["paragraph-4"],
+      "on_screen_text": ["可检查", "可恢复", "避免重复付费"],
+      "estimated_seconds": 10
+    },
+    {
+      "id": "scene-06",
+      "purpose": "summary",
+      "voiceover": "真正可复用的自动化，是把编辑判断、成本授权和发布标准都变成明确的生产门禁。",
+      "visual_role": "presenter-led",
+      "graphic_type": "recap-cards",
+      "avatar_layout": "side-presenter",
+      "source_refs": ["paragraph-5"],
+      "on_screen_text": ["编辑判断", "成本授权", "发布标准"],
+      "estimated_seconds": 8
+    }
+  ]
+}
