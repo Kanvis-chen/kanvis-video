@@ -36,7 +36,7 @@ async function readEndpoint(): Promise<string> {
   serverProcess.stdout.setEncoding("utf8");
   return new Promise((resolve, reject) => {
     let stdout = "";
-    const timer = setTimeout(() => reject(new Error(`VisualHyper HTTP bridge did not start. ${stderr}`)), 10_000);
+    const timer = setTimeout(() => reject(new Error(`Kanvis Studio HTTP bridge did not start. ${stderr}`)), 10_000);
     serverProcess.stdout.on("data", (chunk) => {
       stdout += chunk;
       const newline = stdout.indexOf("\n");
@@ -52,7 +52,7 @@ async function readEndpoint(): Promise<string> {
     });
     serverProcess.once("exit", (code) => {
       clearTimeout(timer);
-      reject(new Error(`VisualHyper HTTP bridge exited with code ${code}. ${stderr}`));
+      reject(new Error(`Kanvis Studio HTTP bridge exited with code ${code}. ${stderr}`));
     });
   });
 }

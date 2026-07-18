@@ -53,9 +53,9 @@ try {
   const resources = await client.listResources();
   const widget = await client.readResource({ uri: "ui://widget/visualhyper/editor.html" });
   const widgetText = widget.contents[0] && "text" in widget.contents[0] ? widget.contents[0].text : "";
-  if (!widgetText.includes("__VISUALHYPER_MCP_WIDGET__")) throw new Error("VisualHyper widget resource was not inlined.");
+  if (!widgetText.includes("__VISUALHYPER_MCP_WIDGET__")) throw new Error("Kanvis Studio widget resource was not inlined.");
   if (/(?:src|href)="\/assets\//.test(widgetText) || /from"\.\/index-/.test(widgetText)) {
-    throw new Error("VisualHyper widget still references external build chunks.");
+    throw new Error("Kanvis Studio widget still references external build chunks.");
   }
 
   const updated = await client.callTool({

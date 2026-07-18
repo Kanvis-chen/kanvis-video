@@ -53,7 +53,7 @@ try {
   const html = await ui.text();
   if (!ui.ok || !html.includes("Kanvis Studio")) throw new Error("Built Kanvis UI was not served.");
   const csp = ui.headers.get("content-security-policy");
-  if (!csp?.includes("default-src 'self'")) throw new Error("VisualHyper UI is missing its CSP header.");
+  if (!csp?.includes("default-src 'self'")) throw new Error("Kanvis Studio UI is missing its CSP header.");
 
   console.log(JSON.stringify({
     ok: true,

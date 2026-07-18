@@ -22,7 +22,7 @@ async function requireBuiltServer() {
   try {
     await access(serverEntry);
   } catch {
-    throw new Error("VisualHyper has not been built. Run pnpm install && pnpm build first.");
+    throw new Error("Kanvis Studio has not been built. Run pnpm install && pnpm build first.");
   }
   return import(pathToFileURL(serverEntry).href);
 }
@@ -51,7 +51,7 @@ async function waitForStatus(getPanelStatus, projectDir, timeoutMs = 10_000) {
     if (status) return status;
     await new Promise((resolve) => setTimeout(resolve, 150));
   }
-  throw new Error(`VisualHyper did not become ready within ${timeoutMs}ms.`);
+  throw new Error(`Kanvis Studio did not become ready within ${timeoutMs}ms.`);
 }
 
 const options = parseArgs(process.argv);
@@ -89,5 +89,5 @@ if (options.command === "start" || options.command === "serve") {
   const stopped = await server.stopPanelForProject(options.projectDir);
   console.log(JSON.stringify({ ok: true, stopped }, null, 2));
 } else {
-  throw new Error(`Unknown VisualHyper command: ${options.command}`);
+  throw new Error(`Unknown Kanvis Studio command: ${options.command}`);
 }

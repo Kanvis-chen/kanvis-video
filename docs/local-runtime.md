@@ -5,7 +5,7 @@ The project must remain useful without MiniMax, HeyGen, or another paid provider
 Run hardware detection with:
 
 ```bash
-node scripts/detect-runtime.mjs --config examples/knowledge-video/kanvis-cut.config.json
+node scripts/detect-runtime.mjs --config examples/knowledge-video/kanvis-video.config.json
 ```
 
 ## Hardware profiles

@@ -1,15 +1,16 @@
 {
-  "name": "kanvis-cut",
-  "version": "0.2.1",
-  "description": "An open-source Codex Skill and basic video workbench for turning long-form content into directed video projects.",
+  "name": "kanvis-video",
+  "version": "0.3.0",
+  "description": "Kanvis Video turns long-form content into directed video projects and hands finished work to Kanvis Studio.",
   "type": "module",
   "scripts": {
     "test": "node --test tests/*.test.mjs",
-    "check": "npm test && node scripts/validate-skill.mjs && node scripts/preflight.mjs --article examples/knowledge-video/article.md --config examples/knowledge-video/kanvis-cut.config.json && node scripts/detect-runtime.mjs --config examples/knowledge-video/kanvis-cut.config.json && node scripts/validate-scene-plan.mjs examples/knowledge-video/scene-plan.json",
+    "check": "npm test && node scripts/validate-skill.mjs && node scripts/preflight.mjs --article examples/knowledge-video/article.md --config examples/knowledge-video/kanvis-video.config.json && node scripts/detect-runtime.mjs --config examples/knowledge-video/kanvis-video.config.json && node scripts/validate-scene-plan.mjs examples/knowledge-video/scene-plan.json",
     "runtime:detect": "node scripts/detect-runtime.mjs",
     "release:audit": "node scripts/release-audit.mjs",
     "release:audit:local": "node scripts/release-audit.mjs --allow-placeholders",
-    "release:set-url": "node scripts/set-repository-url.mjs"
+    "release:set-url": "node scripts/set-repository-url.mjs",
+    "studio:open": "node scripts/open-studio.mjs"
   },
   "engines": {
     "node": ">=20"

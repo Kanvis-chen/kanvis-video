@@ -4,7 +4,7 @@ Use these drafts after replacing the GitHub URL with the final public repository
 
 ## Chinese Short Post
 
-我开源了 Kanvis Cut。
+我开源了 Kanvis Video。
 
 它不是让数字人把文章念一遍，而是把长文重新导演成视频项目：
 
@@ -19,15 +19,15 @@ Use these drafts after replacing the GitHub URL with the final public repository
 
 最重要的差异是：数字人不是永远站在主画面里。当证据、流程、数字和对比更重要时，数字人应该退到角落，让画面承载信息。
 
-仓库里有无隐私示例、配置前检、分镜校验、基础视频工作台、质量报告和 CI。
+仓库里有无隐私示例、配置前检、分镜校验、Kanvis Studio、质量报告和 CI。
 
-GitHub：https://github.com/Kanvis-chen/kanvis-cut
+GitHub：https://github.com/Kanvis-chen/kanvis-video
 
 ## English Short Post
 
-I open-sourced Kanvis Cut.
+I open-sourced Kanvis Video.
 
-It is an open-source Codex Skill and basic video workbench that turns long-form content into directed, release-gated video projects.
+It is an open-source Codex Skill suite plus Kanvis Studio that turns long-form content into directed, release-gated video projects.
 
 It does more than make a talking head read a script:
 
@@ -44,11 +44,11 @@ The avatar is not always the main screen. When evidence, processes, numbers, or 
 
 MIT licensed. Privacy-safe example included.
 
-https://github.com/Kanvis-chen/kanvis-cut
+https://github.com/Kanvis-chen/kanvis-video
 
 ## Longer Chinese Post
 
-我开源了 Kanvis Cut：一个 Codex Skill + 基础视频工作台。
+我开源了 Kanvis Video：一个视频 Skill 能力层 + 本地 Kanvis Studio 工作台。
 
 它解决的不是“怎么生成一个数字人”，而是另一个更常见的问题：
 
@@ -78,7 +78,7 @@ https://github.com/Kanvis-chen/kanvis-cut
 - 平台预设；
 - 质量检查规则。
 
-GitHub：https://github.com/Kanvis-chen/kanvis-cut
+GitHub：https://github.com/Kanvis-chen/kanvis-video
 
 ## Discussion Starter
 

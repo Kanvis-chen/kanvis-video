@@ -25,7 +25,7 @@ function commandExists(command) {
 test('privacy-safe example passes preflight and scene validation', () => {
   const preflight = runNode('scripts/preflight.mjs', [
     '--article', 'examples/knowledge-video/article.md',
-    '--config', 'examples/knowledge-video/kanvis-cut.config.json'
+    '--config', 'examples/knowledge-video/kanvis-video.config.json'
   ]);
   assert.equal(preflight.status, 0, preflight.stderr || preflight.stdout);
   assert.equal(JSON.parse(preflight.stdout).ok, true);
@@ -124,7 +124,7 @@ test('project initialization is deterministic and protects existing work', () =>
     const out = path.join(temp, 'project');
     const args = [
       '--article', 'examples/knowledge-video/article.md',
-      '--config', 'examples/knowledge-video/kanvis-cut.config.json',
+      '--config', 'examples/knowledge-video/kanvis-video.config.json',
       '--out', out
     ];
     const first = runNode('scripts/init-project.mjs', args);
@@ -135,11 +135,53 @@ test('project initialization is deterministic and protects existing work', () =>
     assert.ok(manifest.runtime.selected);
     assert.match(manifest.source_sha256, /^[a-f0-9]{64}$/);
     assert.ok(fs.existsSync(path.join(out, 'input', 'source.md')));
-    assert.ok(fs.existsSync(path.join(out, 'kanvis-cut.config.json')));
+    assert.ok(fs.existsSync(path.join(out, 'kanvis-video.config.json')));
 
     const second = runNode('scripts/init-project.mjs', args);
     assert.equal(second.status, 2);
     assert.match(second.stderr, /already exists/);
+  } finally {
+    fs.rmSync(temp, { recursive: true, force: true });
+  }
+});
+
+test('finished video can be handed to Kanvis Studio as a flat project', () => {
+  const temp = fs.mkdtempSync(path.join(os.tmpdir(), 'kanvis-studio-handoff-'));
+  try {
+    const project = path.join(temp, 'project');
+    const output = path.join(project, 'output');
+    fs.mkdirSync(output, { recursive: true });
+    fs.copyFileSync(
+      path.join(root, 'examples/knowledge-video/kanvis-video.config.json'),
+      path.join(project, 'kanvis-video.config.json')
+    );
+    fs.writeFileSync(path.join(output, 'video.mp4'), 'privacy-safe-test-video');
+
+    const prepared = runNode('scripts/open-studio.mjs', [
+      '--project', project,
+      '--video', path.join(output, 'video.mp4'),
+      '--prepare-only'
+    ]);
+    assert.equal(prepared.status, 0, prepared.stderr || prepared.stdout);
+    const report = JSON.parse(prepared.stdout);
+    assert.equal(report.prepared, true);
+
+    const artifact = JSON.parse(fs.readFileSync(path.join(project, 'visualhyper.artifact.json'), 'utf8'));
+    assert.equal(artifact.workflowId, 'kanvis-article-to-video');
+    assert.equal(artifact.status, 'rendered');
+    assert.equal(artifact.mode, 'animation');
+    assert.deepEqual(artifact.outputs, [{
+      kind: 'video',
+      relativePath: 'output/video.mp4',
+      mimeType: 'video/mp4'
+    }]);
+
+    const repeated = runNode('scripts/open-studio.mjs', [
+      '--project', project,
+      '--prepare-only'
+    ]);
+    assert.equal(repeated.status, 0, repeated.stderr || repeated.stdout);
+    assert.equal(JSON.parse(repeated.stdout).prepared, false);
   } finally {
     fs.rmSync(temp, { recursive: true, force: true });
   }
@@ -172,11 +214,11 @@ test('repository URL helper replaces placeholders only for the expected repo', (
       'https://github.com/example/wrong-name'
     ], { cwd: temp, encoding: 'utf8' });
     assert.equal(bad.status, 2);
-    assert.match(bad.stderr, /kanvis-cut/);
+    assert.match(bad.stderr, /kanvis-video/);
 
     const good = spawnSync(process.execPath, [
       path.join(temp, 'scripts/set-repository-url.mjs'),
-      'https://github.com/example/kanvis-cut'
+      'https://github.com/example/kanvis-video'
     ], { cwd: temp, encoding: 'utf8' });
     assert.equal(good.status, 0, good.stderr || good.stdout);
     const report = JSON.parse(good.stdout);
@@ -190,7 +232,7 @@ test('repository URL helper replaces placeholders only for the expected repo', (
       'docs/repository-setup.md'
     ]) {
       const text = fs.readFileSync(path.join(temp, file), 'utf8');
-      assert.match(text, /https:\/\/github\.com\/example\/kanvis-cut/);
+      assert.match(text, /https:\/\/github\.com\/example\/kanvis-video/);
       assert.equal(text.includes(repositoryPlaceholder), false);
     }
   } finally {

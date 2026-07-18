@@ -1,6 +1,6 @@
 # Three Production Modes
 
-One Kanvis Cut project uses one shared content, scene, effect, cover, QA, and export pipeline. The presenter source is the variable.
+One Kanvis Video project uses one shared content, scene, effect, cover, QA, and export pipeline. The presenter source is the variable.
 
 ## Human enhancement
 

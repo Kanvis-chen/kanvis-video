@@ -21,6 +21,6 @@
     "speed": 1
   },
   "effects": { "enabled": true, "intensity": "medium" },
-  "workbench": { "enabled": true, "project_format": "kanvis-cut-project" },
+  "workbench": { "enabled": true, "project_format": "kanvis-video-project", "open_after_render": true },
   "cost": { "paid_calls": "off", "currency": "USD", "cost_limit_per_video": 0 }
 }

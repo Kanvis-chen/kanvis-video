@@ -2,7 +2,7 @@
 
 ## Capability
 
-Publish a basic VisualHyper editing workbench as reproducible source code: canvas preview, timeline editing, layer inspector, parameter controls, project storage, preview, render jobs, and Codex/MCP integration.
+Publish the basic Kanvis Studio editing workbench as reproducible source code: canvas preview, timeline editing, layer inspector, parameter controls, project storage, preview, render jobs, and Codex/MCP integration.
 
 ## Open-source review
 

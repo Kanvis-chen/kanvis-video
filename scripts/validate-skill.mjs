@@ -25,7 +25,7 @@ if (!match) {
   for (const key of fields.keys()) {
     if (!['name', 'description'].includes(key)) errors.push(`unsupported frontmatter field: ${key}`);
   }
-  if (fields.get('name') !== 'article-to-avatar-video') errors.push('name must be article-to-avatar-video');
+  if (fields.get('name') !== 'kanvis-article-to-video') errors.push('name must be kanvis-article-to-video');
   if (!fields.get('description')) errors.push('description is required');
 }
 
@@ -34,4 +34,4 @@ if (errors.length) {
   process.exit(1);
 }
 
-console.log('Skill is valid: article-to-avatar-video');
+console.log('Skill is valid: kanvis-article-to-video');

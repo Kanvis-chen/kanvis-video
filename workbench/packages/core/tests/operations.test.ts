@@ -11,7 +11,7 @@ import {
   undoProject,
 } from "../src/index.js";
 
-describe("VisualHyper project operations", () => {
+describe("Kanvis Studio project operations", () => {
   it("applies a batch atomically and increments one revision", () => {
     const source = createVisualHyperProject({ projectId: "project-test" });
     const result = applyProjectOperations(source, {

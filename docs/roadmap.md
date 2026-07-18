@@ -19,7 +19,7 @@ Status: current.
 Goal: make a new contributor understand and run the pipeline in under 10 minutes.
 
 - Add a generated demo project snapshot.
-- Add a minimal Kanvis Cut project schema example.
+- Add a minimal Kanvis Video project schema example.
 - Add a mock provider adapter note or local-only adapter.
 - Add one more platform preset.
 - Add FAQ entries from first-run issues.
@@ -52,14 +52,14 @@ Goal: make providers replaceable without making provider calls the center of the
 - Add cost-report examples.
 - Add retry/resume behavior examples.
 
-## v0.6: Kanvis Cut Skills Split
+## v0.6: Kanvis Video Skills Split
 
 Goal: split only the pieces that have stable examples and repeated demand.
 
 - Stabilize `cover-director` as a general cover and visual-hook skill.
 - Stabilize `subtitle-director` for Chinese short-video caption rhythm.
 - Stabilize `effect-director` for scene-level motion and emphasis parameters.
-- Keep `/kanvis-cut` as a router only after at least two subskills have tests and examples.
+- Keep `$kanvis-video` as a router only after at least two subskills have tests and examples.
 
 ## v0.7: Basic Open Workbench
 

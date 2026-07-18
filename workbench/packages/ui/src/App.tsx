@@ -76,10 +76,10 @@ function McpWidgetApp() {
   }, [app, isConnected, preferredDisplayMode, projectDir]);
 
   if (error) {
-    return <div className="widget-status widget-status--error">VisualHyper 无法连接 Codex 宿主：{error.message}</div>;
+    return <div className="widget-status widget-status--error">Kanvis Studio 无法连接 Codex 宿主：{error.message}</div>;
   }
   if (!isConnected || !projectDir) {
-    return <div className="widget-status">正在把 VisualHyper 接入当前 Codex 任务…</div>;
+    return <div className="widget-status">正在把 Kanvis Studio 接入当前 Codex 任务…</div>;
   }
   return <Workspace />;
 }

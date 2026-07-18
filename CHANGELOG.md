@@ -1,5 +1,22 @@
 # Changelog
 
+## 0.3.0
+
+### Added
+
+- `Kanvis Video` as the public repository and open-source video capability layer inside Kanvis System.
+- `$kanvis-article-to-video` as the accurate name for the first human, faceless, and avatar-capable workflow.
+- `$kanvis-studio` as the direct launcher for the local Kanvis Studio workspace.
+- Automatic finished-video handoff through `scripts/open-studio.mjs`.
+- Flat MP4 artifact import with explicit loss-of-editability disclosure.
+
+### Changed
+
+- Renamed the public editor from Kanvis Video Workbench to Kanvis Studio.
+- Renamed project contracts and examples from `kanvis-cut-*` to `kanvis-video-*`.
+- Retired Kanvis Cut as a public product name; internal VisualHyper identifiers remain implementation contracts.
+- Bumped the public package to `0.3.0` because Skill and project-contract names changed.
+
 ## 0.2.1
 
 ### Added
@@ -43,7 +60,7 @@
 - Transparent distinction between fully generated avatars and real-performance-driven lip sync.
 - Local hardware detection with CPU, preview, standard, and high profiles.
 - Automatic local, cloud, or mock runtime recommendation without hidden paid calls.
-- Generic `kanvis-cut.config.json` example and normalized project manifests.
+- Generic `kanvis-video.config.json` example and normalized project manifests.
 - Twelve-part Chinese release series for sustained public demonstrations.
 
 ### Changed

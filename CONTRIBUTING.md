@@ -1,6 +1,6 @@
 # Contributing
 
-Thanks for improving Kanvis Cut.
+Thanks for improving Kanvis Video.
 
 ## Before opening a change
 

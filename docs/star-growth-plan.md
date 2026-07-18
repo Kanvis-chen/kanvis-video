@@ -37,7 +37,7 @@ I want a structured pipeline that preserves claims, directs scenes, controls cos
 ### Day 0: GitHub Public
 
 - Push `main`.
-- Publish `v0.2.1`.
+- Publish `v0.3.0`.
 - Add the recommended description and topics.
 - Create 3 good first issues from `docs/good-first-issues.md`.
 - Open one discussion from `docs/launch-copy.md`.

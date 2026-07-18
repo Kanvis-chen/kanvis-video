@@ -1,9 +1,9 @@
 ---
-name: article-to-avatar-video
+name: kanvis-article-to-video
 description: Turn a Chinese article, WeChat Official Account post, Markdown document, or pasted long-form text into a visually directed, release-gated video project in one of three presenter modes: human enhancement, faceless visual, or authorized avatar presenter. Use when Codex must preserve source fidelity, rewrite an article for speech, create a timed semantic storyboard, add article-matched information graphics and effects, compose captions and audio, select local/cloud/mock execution without hidden paid calls, render an MP4, and run release-quality checks.
 ---
 
-# Kanvis Cut: Article to Avatar Video Workflow
+# Kanvis Article to Video
 
 Create a repeatable article-to-video project. Treat the skill as an orchestrator: select one presenter mode, use provider adapters only when that mode needs them, and use HyperFrames for deterministic layout, animation, captions, composition, and rendering.
 
@@ -11,7 +11,7 @@ This package does not ship a hosted service or provider SDK. It supplies the pro
 
 ## Intake
 
-Accept pasted text or a local `.md`/`.txt` article. Locate `kanvis-cut.config.json` and select exactly one presenter mode:
+Accept pasted text or a local `.md`/`.txt` article. Locate `kanvis-video.config.json` and select exactly one presenter mode:
 
 - `human`: retain authorized recorded performance and add editing, captions, effects, and information graphics;
 - `none`: build a faceless visual video from narration, typography, diagrams, screenshots, and licensed media;
@@ -26,12 +26,12 @@ Before paid work, validate that:
 - credentials are available through environment variables, never committed files;
 - `paid_calls` is `auto`, `confirm`, or `off`.
 
-If configuration is missing, copy `assets/kanvis-cut.config.example.json` into the project, fill only known values, and ask for the smallest missing decision. Read [references/configuration.md](references/configuration.md) for the schema.
+If configuration is missing, copy `assets/kanvis-video.config.example.json` into the project, fill only known values, and ask for the smallest missing decision. Read [references/configuration.md](references/configuration.md) for the schema.
 
 Detect the runtime before generation:
 
 ```bash
-node <SKILL_DIR>/scripts/detect-runtime.mjs --config <kanvis-cut.config.json>
+node <SKILL_DIR>/scripts/detect-runtime.mjs --config <kanvis-video.config.json>
 ```
 
 When local hardware is insufficient, do not silently call a paid provider. Use cloud only when `allow_cloud_fallback` is true; otherwise continue with `mock` project generation. Read [docs/local-runtime.md](docs/local-runtime.md).
@@ -39,13 +39,13 @@ When local hardware is insufficient, do not silently call a paid provider. Use c
 Run a structural preflight before initialization. Add `--paid` only when checking whether the project is ready for external billable generation:
 
 ```bash
-node <SKILL_DIR>/scripts/preflight.mjs --article <article.md> --config <kanvis-cut.config.json> [--paid]
+node <SKILL_DIR>/scripts/preflight.mjs --article <article.md> --config <kanvis-video.config.json> [--paid]
 ```
 
 Initialize a job with:
 
 ```bash
-node <SKILL_DIR>/scripts/init-project.mjs --article <article.md> --out <project-dir> --config <kanvis-cut.config.json>
+node <SKILL_DIR>/scripts/init-project.mjs --article <article.md> --out <project-dir> --config <kanvis-video.config.json>
 ```
 
 ## Workflow
@@ -124,10 +124,26 @@ output/
 Run:
 
 ```bash
-node <SKILL_DIR>/scripts/quality-check.mjs --video output/video.mp4 --config kanvis-cut.config.json --report output/quality-report.json --visual-review passed
+node <SKILL_DIR>/scripts/quality-check.mjs --video output/video.mp4 --config kanvis-video.config.json --report output/quality-report.json --visual-review passed
 ```
 
 Inspect the video visually before passing `--visual-review passed`. Check for presenter or lip-sync artifacts, incorrect emphasis, misleading graphics, captions covering the face, pronunciation errors, and missing AI-generated-content disclosure. Use [references/acceptance-criteria.md](references/acceptance-criteria.md). Do not call a video publish-ready while any blocking criterion fails or the visual review remains pending.
+
+### 7. Hand off to Kanvis Studio
+
+After a video passes the quality gate, read `workbench.enabled` and `workbench.open_after_render` from `kanvis-video.config.json`.
+
+- When both are `true`, use full handoff mode: register the final MP4 as a Studio project output and open the current project automatically.
+- When automatic opening is disabled, return the project path and tell the user they can invoke `$kanvis-studio` later.
+- Preserve an existing `visualhyper.artifact.json`; it contains richer editable layers and parameters than a flat MP4.
+
+```bash
+node <SKILL_DIR>/scripts/open-studio.mjs \
+  --project <project-dir> \
+  --video <project-dir>/output/video.mp4
+```
+
+An MP4-only handoff is intentionally flat: Studio can play, inspect, split, annotate, and continue the project, but it cannot reconstruct layers that were already composited. Never describe a flat import as a lossless editable source project.
 
 ## Failure behavior
 
@@ -144,7 +160,8 @@ Inspect the video visually before passing `--visual-review passed`. Check for pr
 - `scripts/init-project.mjs`: create a deterministic job directory from an article and config.
 - `scripts/validate-scene-plan.mjs`: reject malformed or unsafe scene plans before generation.
 - `scripts/quality-check.mjs`: inspect the rendered media with `ffprobe` and write a JSON report.
-- `assets/kanvis-cut.config.example.json`: portable three-mode, runtime, brand, output, and budget settings.
+- `scripts/open-studio.mjs`: prepare a finished or existing project and open it in Kanvis Studio.
+- `assets/kanvis-video.config.example.json`: portable three-mode, runtime, brand, output, and budget settings.
 - `assets/avatar-video.config.example.json`: avatar-mode configuration example.
 - `assets/scene-plan.example.json`: scene-plan contract.
 - `scripts/detect-runtime.mjs`: detect a hardware profile and choose local, cloud, or mock execution.

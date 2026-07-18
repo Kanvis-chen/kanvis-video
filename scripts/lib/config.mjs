@@ -25,7 +25,10 @@ export function normalizeConfig(config) {
   normalized.runtime ??= { mode: 'auto', allow_cloud_fallback: false };
   normalized.runtime.mode ??= 'auto';
   normalized.effects ??= { enabled: true };
-  normalized.workbench ??= { enabled: true };
+  normalized.workbench ??= {};
+  normalized.workbench.enabled ??= true;
+  normalized.workbench.project_format ??= 'kanvis-video-project';
+  normalized.workbench.open_after_render ??= true;
   return normalized;
 }
 
@@ -40,6 +43,7 @@ export function validateConfig(input, { paid = false } = {}) {
   const human = config.human;
   const voice = config.voice;
   const cost = config.cost;
+  const workbench = config.workbench;
   const presenterMode = production?.presenter_mode;
 
   if (!PRESENTER_MODES.includes(presenterMode)) {
@@ -104,6 +108,15 @@ export function validateConfig(input, { paid = false } = {}) {
   }
   if (Number.isFinite(cost?.cost_limit_per_video) && cost.cost_limit_per_video < 0) {
     errors.push('cost.cost_limit_per_video must not be negative');
+  }
+  if (typeof workbench?.enabled !== 'boolean') {
+    errors.push('workbench.enabled must be a boolean');
+  }
+  if (typeof workbench?.open_after_render !== 'boolean') {
+    errors.push('workbench.open_after_render must be a boolean');
+  }
+  if (workbench?.project_format !== 'kanvis-video-project') {
+    errors.push('workbench.project_format must be kanvis-video-project');
   }
 
   const placeholder = (value) => !value || String(value).includes('REPLACE_ME');

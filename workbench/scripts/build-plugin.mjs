@@ -40,7 +40,7 @@ const scriptMatch = uiIndexHtml.match(/<script\b[^>]*\bsrc="([^"]+)"[^>]*><\/scr
 const styleMatch = uiIndexHtml.match(/<link\b[^>]*\brel="stylesheet"[^>]*\bhref="([^"]+)"[^>]*>/i)
   ?? uiIndexHtml.match(/<link\b[^>]*\bhref="([^"]+)"[^>]*\brel="stylesheet"[^>]*>/i);
 if (!scriptMatch?.[1] || !styleMatch?.[1]) {
-  throw new Error("VisualHyper UI build did not contain the expected JavaScript and stylesheet assets.");
+  throw new Error("Kanvis Studio UI build did not contain the expected JavaScript and stylesheet assets.");
 }
 const assetFile = (href) => path.join(uiDistDir, href.replace(/^\/+/, ""));
 const [uiScriptRaw, uiStylesRaw] = await Promise.all([

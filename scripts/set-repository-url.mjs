@@ -15,7 +15,7 @@ const targetFiles = [
 ];
 
 function usage() {
-  console.error('Usage: node scripts/set-repository-url.mjs https://github.com/<owner>/kanvis-cut');
+  console.error('Usage: node scripts/set-repository-url.mjs https://github.com/<owner>/kanvis-video');
 }
 
 if (!url) {
@@ -37,8 +37,8 @@ if (parsed.protocol !== 'https:' || parsed.hostname !== 'github.com') {
 }
 
 const pathParts = parsed.pathname.split('/').filter(Boolean);
-if (pathParts.length !== 2 || !['kanvis-cut', 'article-to-avatar-video'].includes(pathParts[1])) {
-  console.error('Repository URL should look like https://github.com/<owner>/kanvis-cut');
+if (pathParts.length !== 2 || pathParts[1] !== 'kanvis-video') {
+  console.error('Repository URL should look like https://github.com/<owner>/kanvis-video');
   process.exit(2);
 }
 

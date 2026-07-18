@@ -1,6 +1,6 @@
 # Configuration
 
-Use `assets/kanvis-cut.config.example.json` as the portable configuration contract. `assets/avatar-video.config.example.json` remains as an avatar-mode example.
+Use `assets/kanvis-video.config.example.json` as the portable configuration contract. `assets/avatar-video.config.example.json` remains as an avatar-mode example.
 
 ## Required choices
 

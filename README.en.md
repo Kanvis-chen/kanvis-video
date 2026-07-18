@@ -1,18 +1,30 @@
-# Kanvis Cut
+# Kanvis Video
 
 English | [中文](README.md)
 
 > Do not merely read an article aloud. Direct it into a video.
 
-Kanvis Cut is an open-source Codex Skill and basic video workbench for turning long-form content into directed, release-gated video projects.
+Kanvis Video is the open-source video-production layer of Kanvis System. It turns long-form content into directed, release-gated video projects with Codex Skills and hands them to the local Kanvis Studio workspace for inspection and editing.
 
-Its first bundled workflow is `article-to-avatar-video`: long-form content becomes a visually directed project across human enhancement, faceless visual, and authorized avatar modes, with multilingual voice and caption paths.
+Its first bundled workflow is `kanvis-article-to-video`: long-form content becomes a visually directed project across human enhancement, faceless visual, and authorized avatar modes, with multilingual voice and caption paths.
 
-Current version: `v0.2.1`
+Current version: `v0.3.0`
+
+## Naming and scope
+
+| Name | Responsibility |
+|---|---|
+| **Kanvis System** | Umbrella brand for Skills, Content OS, Studio, and future operating systems |
+| **Kanvis Content OS** | Obsidian content management and content assets; not this repository |
+| **Kanvis Video** | This repository: video Skills, project contracts, QA, and Studio handoff |
+| **Kanvis Article to Video** | First Skill, invoked as `$kanvis-article-to-video` |
+| **Kanvis Studio** | Local canvas, timeline, inspection, adjustment, rendering, and future project export |
+
+`Kanvis Cut` is retired as a product name because the workspace does substantially more than cutting.
 
 ## Why it exists
 
-Most avatar tools start with a finished script and return a talking-head clip. Kanvis Cut starts with the article. It decides what to say, how to say it, which claims need visual evidence, and when the presenter should move aside for the information.
+Most avatar tools start with a finished script and return a talking-head clip. Kanvis Video starts with the article. It decides what to say, how to say it, which claims need visual evidence, and when the presenter should move aside for the information.
 
 It is not another talking-head generator. It is an editorial video production pipeline.
 
@@ -20,7 +32,7 @@ It is not another talking-head generator. It is an editorial video production pi
 
 This project is not centered on "generate one avatar clip." It is centered on "direct long-form content into a publishable video project."
 
-| Dimension | Digital-human talking-head skill | Kanvis Cut |
+| Dimension | Digital-human talking-head skill | Kanvis Video |
 |---|---|---|
 | Starting point | Finished script, portrait, and voice source | Long-form article, WeChat post, course script, or Markdown document |
 | Core problem | Safely coordinate voice/avatar providers | Adapt, storyboard, visualize, and release-gate article content |
@@ -75,15 +87,26 @@ All modes share the content, scene, effect, cover, QA, and export pipeline. See 
 
 The project remains useful without paid MiniMax or HeyGen calls. See [docs/local-runtime.md](docs/local-runtime.md) for automatic hardware routing and mock fallback.
 
-## Open-source video workbench
+## Kanvis Studio local workbench
 
-The repository includes the basic [Kanvis Video Workbench](workbench/README.md), so users can inspect and lightly adjust Agent-generated video projects instead of only reading a project contract or screenshots.
+The repository includes the basic [Kanvis Studio](workbench/README.md), so users can inspect and lightly adjust Agent-generated video projects instead of only reading a project contract or screenshots.
 
-![Kanvis Video Workbench with canvas, inspector, and multi-track timeline](assets/workbench-preview.png)
+![Kanvis Studio with canvas, inspector, and multi-track timeline](assets/workbench-preview.png)
 
 It provides a visual layer canvas, basic multi-track timeline, text and effect controls, live preview, rendered playback, split/delete operations, undo/redo, local project storage, render jobs, and Codex/MCP integration.
 
 The source is under [`workbench/`](workbench/) and is released under MIT. Its role is a basic inspection and adjustment surface, not the full commercial production backend. Customer project management, batch queues, account/provider operations, private template libraries, team SOPs, commercial export adapters, and client delivery systems are outside this repository. See [Jianying / CapCut Export Strategy](docs/jianying-capcut-export.md) for the export direction.
+
+### Two launch modes
+
+1. **Automatic handoff**: after `$kanvis-article-to-video` renders and passes QA, the finished MP4 is registered as a project output and Kanvis Studio opens the current project.
+2. **Direct open**: invoke `$kanvis-studio` with a recent or explicit project directory, or run the command below.
+
+```bash
+npm run studio:open -- --project ./demo-project --video ./demo-project/output/video.mp4
+```
+
+An existing `visualhyper.artifact.json` keeps its editable layers and parameters. An MP4-only handoff is imported as a flat video for playback, inspection, and additional work; it cannot reconstruct layers already composited into the file.
 
 ## Requirements
 
@@ -96,13 +119,13 @@ The source is under [`workbench/`](workbench/) and is released under MIT. Its ro
 ## Install
 
 ```bash
-git clone https://github.com/Kanvis-chen/kanvis-cut ~/.codex/skills/kanvis-cut
+git clone https://github.com/Kanvis-chen/kanvis-video ~/.codex/skills/kanvis-video
 ```
 
 Start a new Codex task and invoke the Skill explicitly:
 
 ```text
-Use $article-to-avatar-video from Kanvis Cut to turn this Chinese article into a visually directed video project.
+Use $kanvis-article-to-video from Kanvis Video to turn this Chinese article into a visually directed video project, then open the result in Kanvis Studio.
 Show me the script, scene plan, provider cost, and preview before paid full-length generation.
 ```
 
@@ -120,14 +143,14 @@ Manual workflow:
 ```bash
 node scripts/preflight.mjs \
   --article examples/knowledge-video/article.md \
-  --config examples/knowledge-video/kanvis-cut.config.json
+  --config examples/knowledge-video/kanvis-video.config.json
 
 node scripts/detect-runtime.mjs \
-  --config examples/knowledge-video/kanvis-cut.config.json
+  --config examples/knowledge-video/kanvis-video.config.json
 
 node scripts/init-project.mjs \
   --article examples/knowledge-video/article.md \
-  --config examples/knowledge-video/kanvis-cut.config.json \
+  --config examples/knowledge-video/kanvis-video.config.json \
   --out ./demo-project
 
 node scripts/validate-scene-plan.mjs examples/knowledge-video/scene-plan.json
@@ -135,17 +158,17 @@ node scripts/validate-scene-plan.mjs examples/knowledge-video/scene-plan.json
 
 Use `--paid` with `preflight.mjs` to require confirmed consent, configured asset IDs, and an enabled paid-call policy.
 
-The repository also includes a more general cut-project protocol example:
+The repository also includes a more general video-project protocol example:
 
-- [assets/kanvis-cut-project.schema.json](assets/kanvis-cut-project.schema.json)
-- [examples/knowledge-video/kanvis-cut-project.json](examples/knowledge-video/kanvis-cut-project.json)
+- [assets/kanvis-video-project.schema.json](assets/kanvis-video-project.schema.json)
+- [examples/knowledge-video/kanvis-video-project.json](examples/knowledge-video/kanvis-video-project.json)
 
 ## Release QA
 
 ```bash
 node scripts/quality-check.mjs \
   --video output/video.mp4 \
-  --config kanvis-cut.config.json \
+  --config kanvis-video.config.json \
   --report output/quality-report.json \
   --visual-review passed
 ```

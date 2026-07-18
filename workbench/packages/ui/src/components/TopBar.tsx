@@ -55,7 +55,7 @@ export function TopBar() {
 
   return (
     <header className="topbar">
-      <div className="brand-lockup"><div className="brand-mark"><FileVideo2 size={18} strokeWidth={2.4} /></div><span className="brand-name">KANVIS</span><span className="phase-chip">AI VIDEO STUDIO</span></div>
+      <div className="brand-lockup"><div className="brand-mark"><FileVideo2 size={18} strokeWidth={2.4} /></div><span className="brand-name">KANVIS</span><span className="phase-chip">KANVIS STUDIO</span></div>
       <button aria-expanded={projectMenuOpen} className="project-switcher" onClick={() => setProjectMenuOpen((value) => !value)} type="button"><span>{project.metadata.title}</span><ChevronDown size={14} /></button>
       {projectMenuOpen ? <form className="project-open-menu" onSubmit={handleOpenProject}>
         <div><FolderOpen size={16} /><span><strong>打开已有 Kanvis 工程</strong><small>完整工程目录可无损继续编辑</small></span></div>

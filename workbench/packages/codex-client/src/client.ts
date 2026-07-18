@@ -66,7 +66,7 @@ export class CodexAppServerClient {
     });
 
     const params: InitializeParams = {
-      clientInfo: { name: "visualhyper", title: "VisualHyper", version: "0.1.0" },
+      clientInfo: { name: "visualhyper", title: "Kanvis Studio", version: "0.1.0" },
       capabilities: null,
     };
     const initialized = await this.request("initialize", params);

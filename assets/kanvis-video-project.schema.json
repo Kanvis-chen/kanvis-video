@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://example.com/kanvis-cut-project.schema.json",
-  "title": "Kanvis Cut Project",
+  "$id": "https://example.com/kanvis-video-project.schema.json",
+  "title": "Kanvis Video Project",
   "type": "object",
   "required": ["schema_version", "title", "language", "target_platform", "scenes"],
   "properties": {

@@ -1,7 +1,7 @@
 interface:
-  display_name: "Kanvis Cut"
+  display_name: "Kanvis Article to Video"
   short_description: "把长文编排成有信息图、出镜模式和发布门禁的视频项目"
-  default_prompt: "Use $article-to-avatar-video from Kanvis Cut to turn this long-form content into a visually directed video project. Show me the script, scene plan, provider cost, and preview before any paid full-length generation."
+  default_prompt: "Use $kanvis-article-to-video from Kanvis Video to turn this long-form content into a visually directed video project. Show the script, scene plan, provider cost, and preview before paid full-length generation, then open the finished project in Kanvis Studio."
 
 policy:
   allow_implicit_invocation: false

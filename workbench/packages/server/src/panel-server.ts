@@ -117,7 +117,7 @@ async function serveStatic(response: ServerResponse, uiDir: string, pathname: st
     info = await stat(candidate).catch(() => null);
   }
   if (!info?.isFile()) {
-    sendJson(response, 503, { error: "VisualHyper UI has not been built. Run pnpm build." });
+    sendJson(response, 503, { error: "Kanvis Studio UI has not been built. Run pnpm build." });
     return;
   }
   response.writeHead(200, {
@@ -382,7 +382,7 @@ export async function startPanelServer(options: { projectDir: string; port?: num
   });
   await artifactWatcher.start();
   const address = server.address();
-  if (!address || typeof address === "string") throw new Error("VisualHyper server did not receive a TCP address.");
+  if (!address || typeof address === "string") throw new Error("Kanvis Studio server did not receive a TCP address.");
   baseUrl = `http://127.0.0.1:${address.port}/`;
   const runtime: PanelRuntime = {
     pid: process.pid,
@@ -451,7 +451,7 @@ export async function stopPanelForProject(projectDirInput: string): Promise<bool
     headers: { "content-type": "application/json" },
     body: JSON.stringify({ instanceId: runtime.instanceId }),
   });
-  if (!response.ok) throw new Error(`VisualHyper shutdown failed with ${response.status}.`);
+  if (!response.ok) throw new Error(`Kanvis Studio shutdown failed with ${response.status}.`);
   await clearRuntime(projectDir, runtime.instanceId);
   return true;
 }

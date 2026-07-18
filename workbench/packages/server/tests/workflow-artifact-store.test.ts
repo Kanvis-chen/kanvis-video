@@ -86,19 +86,19 @@ describe("WorkflowRegistry", () => {
     const projectDir = await tempProject();
     const skillDir = path.join(await tempProject(), "article-style");
     await mkdir(skillDir, { recursive: true });
-    await writeFile(path.join(skillDir, "SKILL.md"), "---\nname: article-to-avatar-video\ndescription: 把公众号文章制作成数字人口播视频。\n---\n\n# Workflow\n");
+    await writeFile(path.join(skillDir, "SKILL.md"), "---\nname: kanvis-article-to-video\ndescription: 把公众号文章制作成数字人口播视频。\n---\n\n# Workflow\n");
     const registry = new WorkflowRegistry(projectDir);
     const first = await registry.importStyleSkill(skillDir, "avatar");
     const second = await registry.importStyleSkill(skillDir, "avatar");
     expect(first.manifest).toMatchObject({
-      id: "article-to-avatar-video",
+      id: "kanvis-article-to-video",
       mode: "avatar",
       provider: "bring-your-own",
       skill: { localPath: skillDir },
     });
     expect(second.manifest.id).toBe(first.manifest.id);
     const summaries = await registry.listStyleSkills("avatar");
-    const summary = summaries.find((entry) => entry.id === "article-to-avatar-video");
+    const summary = summaries.find((entry) => entry.id === "kanvis-article-to-video");
     expect(summary).toMatchObject({ source: "project", availability: { available: true, code: "ready" } });
     expect(JSON.stringify(summary)).not.toContain(skillDir);
   });

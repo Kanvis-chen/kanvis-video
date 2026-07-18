@@ -42,7 +42,8 @@
   },
   "workbench": {
     "enabled": true,
-    "project_format": "kanvis-cut-project"
+    "project_format": "kanvis-video-project",
+    "open_after_render": true
   },
   "brand": {
     "assets_dir": "./brand",

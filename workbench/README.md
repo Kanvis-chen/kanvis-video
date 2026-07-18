@@ -1,8 +1,15 @@
-# Kanvis Video Workbench
+# Kanvis Studio
 
-An open-source basic visual video editing workbench for Agent-generated projects.
+Kanvis Studio is the local visual workspace for Agent-generated video projects.
 
 The workbench exists so users can inspect, correct, and lightly adjust generated projects. It is not the full commercial production backend.
+
+## Launch modes
+
+- **Automatic handoff**: Kanvis Video finishes a render, registers the output artifact, and opens the project in Studio.
+- **Direct open**: invoke `$kanvis-studio` with a recent or explicit project directory.
+
+Projects with a native artifact keep editable layers and parameters. MP4-only projects open as flat video outputs and cannot recover already composited layers.
 
 ## Features
 

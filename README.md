@@ -1,22 +1,34 @@
-# Kanvis Cut
+# Kanvis Video
 
 [English](README.en.md) | 中文
 
 > 文章不是拿来逐字朗读的，而是拿来重新导演的。
 
-Kanvis Cut 是一个开源的 Codex Skill + 基础视频工作台，用来把长文、课程稿和知识库内容变成可导演、可检查、可发布的视频项目。
+Kanvis Video 是 Kanvis System 中开源的视频制作能力层：用 Codex Skill 把长文、课程稿和知识库内容变成可导演、可检查、可发布的视频项目，再交给 Kanvis Studio 本地检查和编辑。
 
-当前内置的首个 workflow 是 `article-to-avatar-video`：从原文保真、口播改写和语义分镜，到真人增强、无人出镜、数字分身、信息图、字幕、多语种配音路径、音频、渲染与发布门禁。
+当前内置的首个 workflow 是 `kanvis-article-to-video`：从原文保真、口播改写和语义分镜，到真人增强、无人出镜、数字分身、信息图、字幕、多语种配音路径、音频、渲染与发布门禁。
 
-当前版本：`v0.2.1`
+当前版本：`v0.3.0`
+
+## 名称与边界
+
+| 名称 | 职责 |
+|---|---|
+| **Kanvis System** | 总品牌，连接 Skill、Content OS、Studio 与后续经营系统 |
+| **Kanvis Content OS** | Obsidian 内容管理与内容资产系统，不是本仓库 |
+| **Kanvis Video** | 本开源仓库：视频 Skill、项目协议、质检与 Studio 交接 |
+| **Kanvis Article to Video** | 当前首个 Skill，调用名 `$kanvis-article-to-video` |
+| **Kanvis Studio** | 本地视频工作台，负责画布、时间轴、检查、微调、渲染与后续工程导出 |
+
+`Kanvis Cut` 不再作为产品名。它容易被理解成单纯裁剪工具，而 Studio 实际覆盖完整的视频项目工作区。
 
 ## 它解决什么问题
 
-普通数字人工具通常从“已有脚本”开始，最终输出一段人物口播。Kanvis Cut 从文章开始，先判断讲什么、怎么讲、什么时候应该让数字人退到画面一角，再把内容编排成可检查、可恢复、可替换供应商的视频项目。
+普通数字人工具通常从“已有脚本”开始，最终输出一段人物口播。Kanvis Video 从文章开始，先判断讲什么、怎么讲、什么时候应该让数字人退到画面一角，再把内容编排成可检查、可恢复、可替换供应商的视频项目。
 
 它不是另一个 talking-head generator，而是一条内容视频生产流水线。
 
-| 能力 | 普通数字人生成 | Kanvis Cut |
+| 能力 | 普通数字人生成 | Kanvis Video |
 |---|---|---|
 | 输入 | 已完成脚本 | 中文长文、公众号文章、Markdown |
 | 内容处理 | 直接朗读 | 原文保真、口语改写、发音表、风险标记 |
@@ -26,9 +38,9 @@ Kanvis Cut 是一个开源的 Codex Skill + 基础视频工作台，用来把长
 
 ## 与数字人口播 Skill 的区别
 
-Kanvis Cut 不以“生成一个数字人视频”为中心，而以“把一篇中文长文重新导演成可发布视频”为中心。
+Kanvis Video 不以“生成一个数字人视频”为中心，而以“把一篇中文长文重新导演成可发布视频”为中心。
 
-| 维度 | 数字人口播 Skill | Kanvis Cut |
+| 维度 | 数字人口播 Skill | Kanvis Video |
 |---|---|---|
 | 起点 | 已经写好的脚本、肖像和声音 | 中文长文、公众号文章、Markdown |
 | 核心问题 | 如何安全调用声音和数字人供应商 | 如何把文章改写、分镜、视觉化并通过发布质检 |
@@ -100,11 +112,11 @@ flowchart LR
 
 具体的声音、数字人和渲染动作由当前 Codex 环境中已安装的 provider adapter 与 HyperFrames 工具完成。
 
-## 开源剪辑工作台
+## Kanvis Studio 本地工作台
 
-仓库同时开放 [Kanvis Video Workbench](workbench/README.md) 的基础版，方便用户检查和微调 Agent 生成的视频项目，而不是只开放项目协议或展示截图。
+仓库同时开放 [Kanvis Studio](workbench/README.md) 的基础版，方便用户检查和微调 Agent 生成的视频项目，而不是只开放项目协议或展示截图。
 
-![Kanvis Video Workbench：画布、属性面板与多轨时间轴](assets/workbench-preview.png)
+![Kanvis Studio：画布、属性面板与多轨时间轴](assets/workbench-preview.png)
 
 基础工作台提供：
 
@@ -117,6 +129,17 @@ flowchart LR
 - HyperFrames、Codex 和 MCP 接入。
 
 源码位于 [`workbench/`](workbench/)，使用 MIT 许可证。它的定位是“基础检查与微调台”，不是完整商业生产后台；客户项目管理、批量队列、账号与供应商运营、私有模板库、团队 SOP、商业导出适配和客户交付系统不在本仓库范围内。参见 [Jianying / CapCut Export Strategy](docs/jianying-capcut-export.md) 了解项目导出方向。
+
+### 两种打开模式
+
+1. **成片自动接力**：`$kanvis-article-to-video` 完成渲染和质量检查后，把 `output/video.mp4` 登记为项目产物，自动启动 Kanvis Studio 并载入当前项目。
+2. **独立打开**：调用 `$kanvis-studio` 打开最近项目或指定项目目录；也可以直接运行下面的命令。
+
+```bash
+npm run studio:open -- --project ./demo-project --video ./demo-project/output/video.mp4
+```
+
+如果项目已经包含 `visualhyper.artifact.json`，Studio 会保留可编辑图层和参数；如果只有 MP4，则以扁平视频导入，能够播放、检查和继续添加内容，但不能恢复已经合成掉的原始图层。
 
 ## 安装
 
@@ -131,13 +154,13 @@ flowchart LR
 将仓库放入 Codex skills 目录：
 
 ```bash
-git clone https://github.com/Kanvis-chen/kanvis-cut ~/.codex/skills/kanvis-cut
+git clone https://github.com/Kanvis-chen/kanvis-video ~/.codex/skills/kanvis-video
 ```
 
 启动新的 Codex 任务并显式调用：
 
 ```text
-Use $article-to-avatar-video from Kanvis Cut to turn this Chinese article into a visually directed video project.
+Use $kanvis-article-to-video from Kanvis Video to turn this Chinese article into a visually directed video project, then open the result in Kanvis Studio.
 Show me the script, scene plan, provider cost, and preview before paid full-length generation.
 ```
 
@@ -157,14 +180,14 @@ npm run check
 ```bash
 node scripts/preflight.mjs \
   --article examples/knowledge-video/article.md \
-  --config examples/knowledge-video/kanvis-cut.config.json
+  --config examples/knowledge-video/kanvis-video.config.json
 
 node scripts/detect-runtime.mjs \
-  --config examples/knowledge-video/kanvis-cut.config.json
+  --config examples/knowledge-video/kanvis-video.config.json
 
 node scripts/init-project.mjs \
   --article examples/knowledge-video/article.md \
-  --config examples/knowledge-video/kanvis-cut.config.json \
+  --config examples/knowledge-video/kanvis-video.config.json \
   --out ./demo-project
 
 node scripts/validate-scene-plan.mjs \
@@ -174,7 +197,7 @@ node scripts/validate-scene-plan.mjs \
 增加 `--paid` 可以检查项目是否已经满足付费生成所需的授权、资产 ID 和策略要求：
 
 ```bash
-node scripts/preflight.mjs --article article.md --config kanvis-cut.config.json --paid
+node scripts/preflight.mjs --article article.md --config kanvis-video.config.json --paid
 ```
 
 ## 项目产物
@@ -184,7 +207,7 @@ node scripts/preflight.mjs --article article.md --config kanvis-cut.config.json 
 ```text
 project/
 ├── input/source.md
-├── kanvis-cut.config.json
+├── kanvis-video.config.json
 ├── project.json
 ├── work/
 │   ├── content-brief.json
@@ -203,15 +226,15 @@ project/
 
 仓库也提供一个更通用的剪辑项目协议示例：
 
-- [assets/kanvis-cut-project.schema.json](assets/kanvis-cut-project.schema.json)
-- [examples/knowledge-video/kanvis-cut-project.json](examples/knowledge-video/kanvis-cut-project.json)
+- [assets/kanvis-video-project.schema.json](assets/kanvis-video-project.schema.json)
+- [examples/knowledge-video/kanvis-video-project.json](examples/knowledge-video/kanvis-video-project.json)
 
 ## 成片质检
 
 ```bash
 node scripts/quality-check.mjs \
   --video output/video.mp4 \
-  --config kanvis-cut.config.json \
+  --config kanvis-video.config.json \
   --report output/quality-report.json \
   --visual-review passed
 ```

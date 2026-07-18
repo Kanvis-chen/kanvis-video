@@ -34,8 +34,8 @@ Right side:
 Footer:
 
 ```text
-Kanvis Cut
-Long-form content -> directed, release-gated video projects
+Kanvis Video
+Video Skills -> Kanvis Studio -> release-ready projects
 ```
 
 ## Avoid

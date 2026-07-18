@@ -9,7 +9,7 @@ Set a repository-local identity before committing:
 ```bash
 git config user.name "YOUR_NAME"
 git config user.email "YOUR_EMAIL"
-git commit -m "chore: prepare Kanvis Cut for public release"
+git commit -m "chore: prepare Kanvis Video for public release"
 ```
 
 Use the same identity you want shown on the first public commit.
@@ -19,7 +19,7 @@ Use the same identity you want shown on the first public commit.
 Recommended repository name:
 
 ```text
-kanvis-cut
+kanvis-video
 ```
 
 Recommended description:
@@ -50,14 +50,14 @@ agent-workflow
 Replace `YOUR_ACCOUNT` with the actual GitHub owner:
 
 ```bash
-git remote add origin https://github.com/YOUR_ACCOUNT/kanvis-cut.git
+git remote add origin https://github.com/YOUR_ACCOUNT/kanvis-video.git
 git push -u origin main
 ```
 
 Then replace all repository URL placeholders:
 
 ```bash
-npm run release:set-url -- https://github.com/YOUR_ACCOUNT/kanvis-cut
+npm run release:set-url -- https://github.com/YOUR_ACCOUNT/kanvis-video
 ```
 
 This updates:
@@ -88,22 +88,22 @@ Add branch protection after the first push:
 Tag:
 
 ```bash
-git tag v0.2.1
-git push origin v0.2.1
+git tag v0.3.0
+git push origin v0.3.0
 ```
 
 Release title:
 
 ```text
-v0.2.1 - Kanvis Cut open-source boundary refresh
+v0.3.0 - Kanvis Video naming and Studio handoff
 ```
 
 Release summary:
 
 ```markdown
-The first public release of Kanvis Cut under the final project name.
+This release establishes Kanvis Video as the open-source video capability layer and Kanvis Studio as its local visual workspace.
 
-It turns long-form content into a structured video project with source-faithful spoken adaptation, semantic scene planning, provider-adaptable voice/avatar generation, cost and consent gates, preview approval, release QA, and a basic open-source video workbench.
+It turns long-form content into a structured video project with source-faithful spoken adaptation, semantic scene planning, provider-adaptable voice/avatar generation, cost and consent gates, preview approval, release QA, and automatic handoff to Kanvis Studio.
 
 This is an orchestration Skill, not a hosted service or bundled provider SDK. Users bring their own tools, provider accounts, credentials, billing, and source-material rights.
 ```
@@ -121,7 +121,7 @@ Also verify:
 
 - README links resolve;
 - no real provider keys or client assets are present;
-- repository links point to the final `kanvis-cut` repository;
+- repository links point to the final `kanvis-video` repository;
 - demo video or GIF is linked, or the README says it is coming soon;
 - `docs/roadmap.md` and `examples/knowledge-video/quality-report.example.json` are present;
 - `workbench/README.md` documents how to build and run the basic open-source visual editor;

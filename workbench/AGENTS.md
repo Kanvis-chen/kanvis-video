@@ -1,4 +1,4 @@
-# VisualHyper development guidance
+# Kanvis Studio development guidance
 
 ## Open-source-first implementation
 

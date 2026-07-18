@@ -45,7 +45,7 @@ export async function sendMessageToCodex(prompt: string): Promise<void> {
     role: "user",
     content: [{
       type: "text",
-      text: `请使用 Kanvis/VisualHyper 的结构化工具和已注册视频 Skill，在项目 ${mcpSession.projectDir} 中完成以下任务。\n${prompt}`,
+      text: `请使用 Kanvis Studio 的结构化工具和已注册视频 Skill，在项目 ${mcpSession.projectDir} 中完成以下任务。\n${prompt}`,
     }],
   });
   if (result.isError) throw new Error("Codex 拒绝了这条修改指令。");
@@ -58,15 +58,15 @@ export function payloadFromToolResult(result: unknown): VisualHyperToolResult["s
 }
 
 async function callMcpTool(name: string, argumentsValue: Record<string, unknown>): Promise<VisualHyperToolResult> {
-  if (!mcpSession) throw new Error("VisualHyper MCP widget session is not ready.");
+  if (!mcpSession) throw new Error("Kanvis Studio MCP widget session is not ready.");
   const result = await mcpSession.app.callServerTool({ name, arguments: argumentsValue }) as VisualHyperToolResult;
-  if (result.isError) throw new Error(`VisualHyper tool ${name} failed.`);
+  if (result.isError) throw new Error(`Kanvis Studio tool ${name} failed.`);
   return result;
 }
 
 function projectFromToolResult(result: VisualHyperToolResult): VisualHyperProject {
   const project = result.structuredContent?.project;
-  if (!project) throw new Error("VisualHyper tool did not return the current project.");
+  if (!project) throw new Error("Kanvis Studio tool did not return the current project.");
   return project;
 }
 

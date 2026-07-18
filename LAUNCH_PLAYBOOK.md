@@ -22,7 +22,7 @@ Never describe this project as "a localized version of another digital-human rep
 
 Use this positioning:
 
-> An open-source Codex Skill and basic video workbench that turns long-form content into directed, release-gated video projects.
+> An open-source video Skill layer with Kanvis Studio that turns long-form content into directed, release-gated video projects.
 
 The durable difference:
 
@@ -83,11 +83,11 @@ Supporting docs:
 
 ### Day 0: Repository public
 
-- Replace repository links with `npm run release:set-url -- https://github.com/<owner>/kanvis-cut`.
+- Replace repository links with `npm run release:set-url -- https://github.com/<owner>/kanvis-video`.
 - Add GitHub topics:
   `codex-skill`, `ai-video`, `article-to-video`, `video-automation`, `content-creation`, `open-core`, `agent-workflow`, `hyperframes`, `digital-human`, `multilingual`.
 - Enable Issues, Discussions, private vulnerability reporting, and read-only Actions permissions.
-- Publish `v0.2.1` release.
+- Publish `v0.3.0` release.
 
 ### Day 1: Proof video
 
@@ -123,7 +123,7 @@ Open 3 `good first issue` items:
 
 ## README checklist before public release
 
-- [ ] Repository URL points to the final `kanvis-cut` repository.
+- [ ] Repository URL points to the final `kanvis-video` repository.
 - [ ] README has a demo video or GIF link.
 - [ ] Launch copy has real repository URL.
 - [ ] Social preview image follows `docs/social-preview-brief.md` and uses `assets/social-preview.svg` or a PNG export.

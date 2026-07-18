@@ -40,7 +40,7 @@ async function ensureNoLiveBridge() {
     .then((value) => JSON.parse(value))
     .catch(() => null);
   if (current && await processExists(current.launcherPid)) {
-    throw new Error(`VisualHyper App bridge is already running at ${current.publicEndpoint}.`);
+    throw new Error(`Kanvis Studio bridge is already running at ${current.publicEndpoint}.`);
   }
   await unlink(runtimeFile).catch(() => undefined);
 }
@@ -54,7 +54,7 @@ async function freePort() {
   const address = server.address();
   const port = typeof address === "object" && address ? address.port : 0;
   await new Promise((resolve) => server.close(resolve));
-  if (!port) throw new Error("Could not reserve a local port for the VisualHyper App bridge.");
+  if (!port) throw new Error("Could not reserve a local port for the Kanvis Studio bridge.");
   return port;
 }
 
@@ -65,7 +65,7 @@ async function waitForEndpoint(child) {
   let stderr = "";
   child.stderr.on("data", (chunk) => { stderr += chunk; });
   return new Promise((resolve, reject) => {
-    const timer = setTimeout(() => reject(new Error(`Local VisualHyper MCP bridge timed out. ${stderr}`)), 10_000);
+    const timer = setTimeout(() => reject(new Error(`Local Kanvis Studio MCP bridge timed out. ${stderr}`)), 10_000);
     child.stdout.on("data", (chunk) => {
       stdout += chunk;
       const newline = stdout.indexOf("\n");
@@ -81,7 +81,7 @@ async function waitForEndpoint(child) {
     });
     child.once("exit", (code) => {
       clearTimeout(timer);
-      reject(new Error(`Local VisualHyper MCP bridge exited with code ${code}. ${stderr}`));
+      reject(new Error(`Local Kanvis Studio MCP bridge exited with code ${code}. ${stderr}`));
     });
   });
 }
@@ -163,7 +163,7 @@ try {
     void cleanup().finally(() => process.exit(code ?? 1));
   });
   child.once("exit", (code) => {
-    if (!closing) console.error(`VisualHyper local MCP bridge exited with code ${code}.`);
+    if (!closing) console.error(`Kanvis Studio local MCP bridge exited with code ${code}.`);
     void cleanup().finally(() => process.exit(code ?? 1));
   });
   process.once("SIGINT", () => { void cleanup().finally(() => process.exit(0)); });

@@ -1,8 +1,8 @@
 {
   "mcpServers": {
     "visualhyper": {
-      "title": "VisualHyper Project Tools",
-      "description": "Open and modify project-local VisualHyper video workspaces.",
+      "title": "Kanvis Studio Project Tools",
+      "description": "Open and modify project-local Kanvis Studio video workspaces.",
       "command": "node",
       "args": [
         "./dist/mcp-server.mjs"

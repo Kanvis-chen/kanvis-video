@@ -47,7 +47,7 @@ for (const dir of ['input', 'work', 'public', 'output']) {
 }
 fs.writeFileSync(path.join(out, 'input', 'source.md'), articleText);
 fs.writeFileSync(
-  path.join(out, 'kanvis-cut.config.json'),
+  path.join(out, 'kanvis-video.config.json'),
   `${JSON.stringify(normalizedConfig, null, 2)}\n`
 );
 

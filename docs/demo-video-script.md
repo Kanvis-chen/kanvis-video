@@ -87,7 +87,7 @@ Visual: GitHub repository and install command.
 
 Narration:
 
-> Kanvis Cut is an MIT-licensed Codex Skill and basic video workbench for long-form creators and video automation developers. Try the privacy-safe example, open an issue, or contribute scene grammar and provider adapters.
+> Kanvis Video is an MIT-licensed video Skill suite with a local Kanvis Studio workspace for long-form creators and video automation developers. Try the privacy-safe example, open an issue, or contribute scene grammar and provider adapters.
 
 ## Production Notes
 

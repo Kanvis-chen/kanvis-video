@@ -16,7 +16,7 @@ try {
     name: "get_visualhyper_project",
     arguments: { projectDir },
   });
-  if (project.isError) throw new Error("Remote bridge could not read the allowed VisualHyper project.");
+  if (project.isError) throw new Error("Remote bridge could not read the allowed Kanvis Studio project.");
   const widget = await client.readResource({ uri: "ui://widget/visualhyper/editor.html" });
   const widgetText = widget.contents[0] && "text" in widget.contents[0] ? widget.contents[0].text : "";
   if (!widgetText.includes("__VISUALHYPER_MCP_WIDGET__")) throw new Error("Remote bridge did not return the inlined widget.");

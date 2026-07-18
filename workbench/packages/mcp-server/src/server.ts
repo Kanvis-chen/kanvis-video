@@ -34,7 +34,7 @@ function toolResult(message: string, structuredContent: Record<string, unknown>,
 async function readWidgetHtml(): Promise<string> {
   const widgetFile = widgetFiles.find((candidate) => existsSync(candidate));
   if (!widgetFile) {
-    throw new Error("VisualHyper widget has not been built. Run pnpm build:plugin.");
+    throw new Error("Kanvis Studio widget has not been built. Run pnpm build:plugin.");
   }
   return readFile(widgetFile, "utf8");
 }
@@ -53,7 +53,7 @@ export function createVisualHyperMcpServer(options: VisualHyperMcpServerOptions 
     const allowedRoot = await allowedProjectDir;
     const relative = path.relative(allowedRoot, store.projectDir);
     if (relative.startsWith("..") || path.isAbsolute(relative)) {
-      throw new Error(`VisualHyper App bridge only permits projects inside ${allowedRoot}.`);
+      throw new Error(`Kanvis Studio bridge only permits projects inside ${allowedRoot}.`);
     }
     return store;
   };
@@ -70,7 +70,7 @@ export function createVisualHyperMcpServer(options: VisualHyperMcpServerOptions 
     { name: "visualhyper-codex-panel", version: "0.1.0" },
     {
       instructions:
-        "Open and modify project-local VisualHyper workspaces. Read the current revision before editing, then apply structured operations. Do not edit generated HyperFrames HTML directly.",
+        "Open and modify project-local Kanvis Studio workspaces. Read the current revision before editing, then apply structured operations. Do not edit generated HyperFrames HTML directly.",
     },
   );
 
@@ -82,7 +82,7 @@ export function createVisualHyperMcpServer(options: VisualHyperMcpServerOptions 
         resourceDomains: [] as string[],
       },
     },
-    "openai/widgetDescription": "VisualHyper project-local video workspace with scene, preview, inspector, and timeline editing.",
+    "openai/widgetDescription": "Kanvis Studio project-local video workspace with scene, preview, inspector, and timeline editing.",
     "openai/widgetPrefersBorder": false,
     "openai/widgetCSP": {
       connect_domains: [] as string[],
@@ -92,11 +92,11 @@ export function createVisualHyperMcpServer(options: VisualHyperMcpServerOptions 
 
   registerAppResource(
     server,
-    "VisualHyper Editor",
+    "Kanvis Studio",
     visualHyperWidgetUri,
     {
-      title: "VisualHyper",
-      description: "Native VisualHyper video editor for the active Codex project.",
+      title: "Kanvis Studio",
+      description: "Native Kanvis Studio video editor for the active Codex project.",
       _meta: resourceMeta,
     },
     async () => ({
@@ -113,8 +113,8 @@ export function createVisualHyperMcpServer(options: VisualHyperMcpServerOptions 
     server,
     "open_visualhyper_panel",
     {
-      title: "Open VisualHyper",
-      description: "Render the project-local VisualHyper editor directly inside Codex. Use fullscreen unless the user explicitly asks for an inline view.",
+      title: "Open Kanvis Studio",
+      description: "Render the project-local Kanvis Studio editor directly inside Codex. Use fullscreen unless the user explicitly asks for an inline view.",
       inputSchema: {
         ...projectArgs,
         displayMode: z.enum(["fullscreen", "inline"]).default("fullscreen"),
@@ -125,8 +125,8 @@ export function createVisualHyperMcpServer(options: VisualHyperMcpServerOptions 
         "ui/resourceUri": visualHyperWidgetUri,
         "openai/outputTemplate": visualHyperWidgetUri,
         "openai/widgetAccessible": true,
-        "openai/toolInvocation/invoking": "Opening VisualHyper...",
-        "openai/toolInvocation/invoked": "VisualHyper is ready",
+        "openai/toolInvocation/invoking": "Opening Kanvis Studio...",
+        "openai/toolInvocation/invoked": "Kanvis Studio is ready",
       },
     },
     async ({ projectDir, displayMode }) => {
@@ -141,7 +141,7 @@ export function createVisualHyperMcpServer(options: VisualHyperMcpServerOptions 
         project: project as unknown as Record<string, unknown>,
         preferredDisplayMode: displayMode,
       };
-      return toolResult("Rendered VisualHyper inside Codex.", payload, {
+      return toolResult("Rendered Kanvis Studio inside Codex.", payload, {
         "openai/outputTemplate": visualHyperWidgetUri,
         widgetData: payload,
       });
@@ -151,15 +151,15 @@ export function createVisualHyperMcpServer(options: VisualHyperMcpServerOptions 
   server.registerTool(
     "open_visualhyper_web_panel",
     {
-      title: "Open VisualHyper Web Fallback",
-      description: "Start or reuse the loopback VisualHyper web panel for development or host fallback, and return its local URL.",
+      title: "Open Kanvis Studio Web Fallback",
+      description: "Start or reuse the loopback Kanvis Studio web panel for development or host fallback, and return its local URL.",
       inputSchema: projectArgs,
       annotations: { readOnlyHint: false, destructiveHint: false, idempotentHint: true, openWorldHint: false },
     },
     async ({ projectDir }) => {
       const store = await openStore(projectDir);
       const panel = await openPanelForProject({ projectDir: store.projectDir });
-      return toolResult(`VisualHyper web fallback is ready at ${panel.runtime.url}`, {
+      return toolResult(`Kanvis Studio web fallback is ready at ${panel.runtime.url}`, {
         url: panel.runtime.url,
         projectDir: panel.runtime.projectDir,
         projectFile: panel.runtime.projectFile,
@@ -173,8 +173,8 @@ export function createVisualHyperMcpServer(options: VisualHyperMcpServerOptions 
   server.registerTool(
     "create_visualhyper_project",
     {
-      title: "Create VisualHyper Project",
-      description: "Create the M0/M1 project model in an existing project directory. Reuses an existing project unless overwrite is explicitly true.",
+      title: "Create Kanvis Studio Project",
+      description: "Create the Kanvis Studio project model in an existing project directory. Reuses an existing project unless overwrite is explicitly true.",
       inputSchema: {
         ...projectArgs,
         title: z.string().min(1).max(200).optional(),
@@ -185,7 +185,7 @@ export function createVisualHyperMcpServer(options: VisualHyperMcpServerOptions 
     async ({ projectDir, title, overwrite }) => {
       const store = await openStore(projectDir);
       const project = await store.create({ ...(title ? { title } : {}), overwrite });
-      return toolResult(`VisualHyper project ${project.projectId} is ready at revision ${project.revision}.`, {
+      return toolResult(`Kanvis Studio project ${project.projectId} is ready at revision ${project.revision}.`, {
         project: project as unknown as Record<string, unknown>,
         projectFile: store.projectFile,
       });
@@ -195,15 +195,15 @@ export function createVisualHyperMcpServer(options: VisualHyperMcpServerOptions 
   server.registerTool(
     "get_visualhyper_project",
     {
-      title: "Get VisualHyper Project",
-      description: "Read the current VisualHyper project, including its revision, scenes, tracks, selection-ready element IDs, and workflow status.",
+      title: "Get Kanvis Studio Project",
+      description: "Read the current Kanvis Studio project, including its revision, scenes, tracks, selection-ready element IDs, and workflow status.",
       inputSchema: projectArgs,
       annotations: { readOnlyHint: true, destructiveHint: false, idempotentHint: true, openWorldHint: false },
     },
     async ({ projectDir }) => {
       const store = await openStore(projectDir);
       const project = await store.load();
-      return toolResult(`VisualHyper project revision ${project.revision}.`, {
+      return toolResult(`Kanvis Studio project revision ${project.revision}.`, {
         project: project as unknown as Record<string, unknown>,
         projectFile: store.projectFile,
       });
@@ -213,7 +213,7 @@ export function createVisualHyperMcpServer(options: VisualHyperMcpServerOptions 
   server.registerTool(
     "apply_visualhyper_operations",
     {
-      title: "Apply VisualHyper Operations",
+      title: "Apply Kanvis Studio Operations",
       description: "Atomically apply validated scene, timing, text, caption, asset, transform, or workflow status operations at a known base revision.",
       inputSchema: {
         ...projectArgs,
@@ -473,21 +473,21 @@ export function createVisualHyperMcpServer(options: VisualHyperMcpServerOptions 
   server.registerTool(
     "list_visualhyper_assets",
     {
-      title: "List VisualHyper Assets",
+      title: "List Kanvis Studio Assets",
       description: "List project-local asset IDs and metadata without embedding media bytes in MCP output.",
       inputSchema: projectArgs,
       annotations: { readOnlyHint: true, destructiveHint: false, idempotentHint: true, openWorldHint: false },
     },
     async ({ projectDir }) => {
       const project = await (await openStore(projectDir)).load();
-      return toolResult(`Found ${project.assets.length} VisualHyper asset(s).`, { assets: project.assets as unknown as Record<string, unknown>[] });
+      return toolResult(`Found ${project.assets.length} Kanvis Studio asset(s).`, { assets: project.assets as unknown as Record<string, unknown>[] });
     },
   );
 
   server.registerTool(
     "undo_visualhyper_project",
     {
-      title: "Undo VisualHyper Project",
+      title: "Undo Kanvis Studio Project",
       description: "Undo the latest structured project operation batch.",
       inputSchema: projectArgs,
       annotations: { readOnlyHint: false, destructiveHint: false, idempotentHint: false, openWorldHint: false },
@@ -504,7 +504,7 @@ export function createVisualHyperMcpServer(options: VisualHyperMcpServerOptions 
   server.registerTool(
     "redo_visualhyper_project",
     {
-      title: "Redo VisualHyper Project",
+      title: "Redo Kanvis Studio Project",
       description: "Redo the latest undone structured project operation batch.",
       inputSchema: projectArgs,
       annotations: { readOnlyHint: false, destructiveHint: false, idempotentHint: false, openWorldHint: false },

@@ -3,7 +3,7 @@
 The safest position is:
 
 ```text
-Kanvis Cut prepares editable project assets.
+Kanvis Video prepares editable project assets.
 Jianying/CapCut remains the final manual editing surface when needed.
 ```
 
