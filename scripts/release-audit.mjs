@@ -106,6 +106,15 @@ function isTextFile(file) {
 const errors = [];
 const warnings = [];
 
+const forbiddenTrackedPaths = [
+  { name: 'environment file', pattern: /(^|\/)\.env(?:\.|$)/i },
+  { name: 'Kanvis Studio runtime state', pattern: /(^|\/)\.visualhyper\//i },
+  { name: 'local agent configuration', pattern: /(^|\/)(?:\.codex|\.claude|\.obsidian)\//i },
+  { name: 'credential or session file', pattern: /(^|\/)[^/]*(?:credential|cookie|session|secret)[^/]*\.(?:json|ya?ml|txt)$/i },
+  { name: 'private key or credential store', pattern: /\.(?:pem|key|p12|pfx|kdbx|keystore)$/i },
+  { name: 'local database', pattern: /\.(?:sqlite3?|db)$/i }
+];
+
 for (const file of requiredFiles) {
   if (!fs.existsSync(path.join(root, file))) {
     errors.push(`required file missing: ${file}`);
@@ -113,6 +122,21 @@ for (const file of requiredFiles) {
 }
 
 if (fs.existsSync(path.join(root, '.git'))) {
+  const trackedResult = spawnSync('git', ['ls-files', '-z'], {
+    cwd: root,
+    encoding: 'utf8',
+    windowsHide: true
+  });
+  if (trackedResult.status !== 0) {
+    errors.push(`could not list tracked files: ${trackedResult.stderr.trim()}`);
+  } else {
+    const trackedFiles = trackedResult.stdout.split('\0').filter(Boolean);
+    for (const trackedFile of trackedFiles) {
+      for (const item of forbiddenTrackedPaths) {
+        if (item.pattern.test(trackedFile)) errors.push(`${item.name} is tracked by git: ${trackedFile}`);
+      }
+    }
+  }
   for (const file of requiredFiles) {
     const tracked = spawnSync('git', ['ls-files', '--error-unmatch', file], {
       cwd: root,
@@ -138,8 +162,19 @@ try {
 
 const forbiddenPatterns = [
   { name: 'OpenAI-style API key', pattern: /sk-[A-Za-z0-9_-]{20,}/ },
+  { name: 'OpenAI project API key', pattern: /sk-proj-[A-Za-z0-9_-]{20,}/ },
+  { name: 'Anthropic-style API key', pattern: /sk-ant-[A-Za-z0-9_-]{20,}/ },
+  { name: 'GitHub personal access token', pattern: /(?:ghp_|github_pat_)[A-Za-z0-9_]{20,}/ },
+  { name: 'AWS access key ID', pattern: /AKIA[0-9A-Z]{16}/ },
+  { name: 'Google API key', pattern: /AIza[A-Za-z0-9_-]{30,}/ },
   { name: 'Bearer token', pattern: new RegExp('Bear' + 'er' + String.raw`\s+[A-Za-z0-9._-]{20,}`, 'i') },
   { name: 'Authorization header', pattern: new RegExp(String.raw`\b` + 'Author' + 'ization' + String.raw`\s*:\s*[A-Za-z0-9._-]{8,}`, 'i') },
+  { name: 'private key material', pattern: new RegExp('BEGIN' + String.raw`\s+(?:RSA\s+|OPENSSH\s+|EC\s+|DSA\s+)?PRIVATE\s+KEY`) },
+  { name: 'Windows user directory', pattern: /[A-Za-z]:[\\/](?:Users|Documents and Settings)[\\/][^\\/\s]+/i },
+  { name: 'Unix user directory', pattern: /\/(?:Users|home)\/[A-Za-z0-9._-]+\// },
+  { name: 'mainland China mobile number', pattern: /(^|\D)1[3-9]\d{9}(\D|$)/ },
+  { name: 'mainland China identity number', pattern: /(^|\D)[1-9]\d{5}(?:18|19|20)\d{2}(?:0[1-9]|1[0-2])(?:[0-2]\d|3[0-1])\d{3}[0-9Xx](\D|$)/ },
+  { name: 'email address', pattern: /[A-Za-z0-9._%+-]+@(?!example\.(?:com|org|net)\b)[A-Za-z0-9.-]+\.[A-Za-z]{2,}/i },
   { name: 'competitor proper name', pattern: new RegExp(['Jin' + 'gyi', 'Rich' + 'ael', 'Rach' + 'el'].join('|'), 'i') },
   { name: 'session cookie file reference', pattern: new RegExp(['session_' + 'cookies', 'cookies' + String.raw`\.json`].join('|'), 'i') }
 ];
@@ -172,7 +207,8 @@ const report = {
   mode: allowPlaceholders ? 'local-prepublish' : 'public-release',
   checked_files: files.length,
   errors,
-  warnings
+  warnings,
+  reminder: 'Before a public push, also run a full-history secret scanner and inspect image/video metadata.'
 };
 
 console.log(JSON.stringify(report, null, 2));

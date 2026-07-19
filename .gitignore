@@ -24,3 +24,20 @@ public/private-voice-source/
 *.wav
 *.mp4
 *.mov
+
+# Local Kanvis Studio state may contain absolute paths and bridge URLs.
+.visualhyper/
+.codex/
+.claude/
+.obsidian/
+*.log
+*.sqlite
+*.sqlite3
+*.db
+*.p12
+*.pfx
+*.kdbx
+*.keystore
+*cookies*.json
+*session*.json
+*credentials*.json
